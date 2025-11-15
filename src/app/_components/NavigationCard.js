@@ -1,0 +1,55 @@
+"use client";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+  InputGroupText,
+  InputGroupTextarea,
+} from "@/components/ui/input-group";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+// import { InputGroup } from "@/components/ui/input";
+// import { InputGroupAddon } from "@/components/ui/input";
+// import { InputGroupInput } from "@/components/ui/input-group";
+import { Toggle } from "@radix-ui/react-toggle";
+import { ChevronDown, Film, Moon, Search, SearchIcon } from "lucide-react";
+
+export const NavigationCard = (props) => {
+  return (
+    <div className="w-full h-fit flex justify-between px-20 py-3">
+      <h1 className="flex gap-2 text-[#4338CA] font-bold text-base">
+        <Film /> Movie Z
+      </h1>
+      <div className="flex gap-3">
+        <Popover>
+          <PopoverTrigger className="border border-[#E4E4E7] font-medium rounded-lg text-sm px-4 py-1.5 flex gap-2 items-center ">
+            <ChevronDown /> GENRE
+          </PopoverTrigger>
+          <PopoverContent>Place content for the popover here.</PopoverContent>
+        </Popover>
+        <InputGroup
+          className="w-95 h-9 border border-[#E4E4E7] rounded-lg text-sm font-normal py-2"
+          type="text"
+        >
+          <InputGroupInput placeholder=" Search..." />
+          <InputGroupAddon>
+            <SearchIcon />
+          </InputGroupAddon>
+        </InputGroup>
+      </div>
+
+      <Toggle
+        aria-label="Toggle moon"
+        size="sm"
+        variant="outline"
+        className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-yellow-300 data-[state=on]:*:[svg]:bg-gray-500 border w-9 h-9 flex items-center justify-center rounded-md"
+      >
+        <Moon />
+      </Toggle>
+    </div>
+  );
+};
