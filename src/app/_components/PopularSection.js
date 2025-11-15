@@ -64,7 +64,7 @@ const popular = [
   },
 ];
 
-export const PopularSection = () => {
+export const PopularSection = (props) => {
   return (
     <div className=" w-fit h-fit grid grid-cols-5 grid-rows-2 border border-red-500 gap-8">
       {popular.map((item, index) => {

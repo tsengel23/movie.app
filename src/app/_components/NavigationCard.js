@@ -21,7 +21,7 @@ import { ChevronDown, Film, Moon, Search, SearchIcon } from "lucide-react";
 export const NavigationCard = (props) => {
   return (
     <div className="w-full h-fit flex justify-between px-20 py-3">
-      <h1 className="flex gap-2 text-[#4338CA] font-bold text-base">
+      <h1 className="flex gap-2 text-[#4338CA] italic font-bold text-base">
         <Film /> Movie Z
       </h1>
       <div className="flex gap-3">
