@@ -1,6 +1,7 @@
 "use client";
 
 import { MovieCard } from "./MovieCard";
+import { TitleCard } from "./TitleCard";
 const popular = [
   {
     image:
@@ -66,7 +67,10 @@ const popular = [
 
 export const PopularSection = (props) => {
   return (
-    <div className=" w-fit h-fit grid grid-cols-5 grid-rows-2 border border-red-500 gap-8">
+    <div className=" w-fit h-fit grid grid-cols-5 border border-red-500 gap-8">
+      <div className="col-span-5">
+        <TitleCard text="popular" title="See more" />
+      </div>
       {popular.map((item, index) => {
         return (
           <MovieCard

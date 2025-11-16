@@ -6,7 +6,10 @@ export const MovieCard = (props) => {
   return (
     <div className=" w-fit h-fit flex flex-col gap-0.5 rounded-lg bg-[#F4F4F5] border overflow-hidden">
       <div className="w-fit h-fit">
-        <img className="w-[230px] h-[340px]" src={props.image} />
+        <img
+          className="w-[230px] h-[340px] hover:opacity-75 transition-opacity duration-300 ease-in-out"
+          src={props.image}
+        />
         {/* IMAGE: */}
       </div>
       <div className="w-[230px] h-[95px] p-2">

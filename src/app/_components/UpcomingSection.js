@@ -1,5 +1,6 @@
 "use client";
 import { MovieCard } from "./MovieCard";
+import { TitleCard } from "./TitleCard";
 
 const upcoming = [
   {
@@ -66,7 +67,10 @@ const upcoming = [
 
 export const UpcomingSection = (props) => {
   return (
-    <div className=" w-fit h-fit grid grid-cols-5 grid-rows-2 border border-red-500 gap-8">
+    <div className=" w-fit h-fit grid grid-cols-5 border border-red-500 gap-8">
+      <div className="col-span-5">
+        <TitleCard text="Upcoming" title="See more" />
+      </div>
       {upcoming.map((item, index) => {
         return (
           <MovieCard

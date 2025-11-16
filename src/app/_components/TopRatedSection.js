@@ -1,5 +1,6 @@
 "use client";
 import { MovieCard } from "./MovieCard";
+import { TitleCard } from "./TitleCard";
 
 const topRated = [
   {
@@ -66,7 +67,10 @@ const topRated = [
 
 export const TopRatedSection = (props) => {
   return (
-    <div className=" w-fit h-fit grid grid-cols-5 grid-rows-2 border border-red-500 gap-8">
+    <div className=" w-fit h-fit grid grid-cols-5 border border-red-500 gap-8">
+      <div className="col-span-5">
+        <TitleCard text="Top Rated" title="See more" />
+      </div>
       {topRated.map((item, index) => {
         return (
           <MovieCard
