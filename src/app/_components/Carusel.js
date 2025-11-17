@@ -10,11 +10,12 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { CarouselMovieItem } from "./CarouselMovieItem";
 import { useRef } from "react";
+import { CarouselMovieItem } from "./CarouselMovieItem";
 
 const content = [
   {
+    image: "https://images4.alphacoders.com/137/thumb-1920-1374991.jpg",
     when: "Now Playing",
     title: "Wicked",
     rate: "6.9/10",
@@ -23,6 +24,7 @@ const content = [
     trailer: "https://www.youtube.com/watch?v=6COmYeLsz4c",
   },
   {
+    image: "https://www.lab111.nl/wp-content/uploads/2024/11/Naamloos-1.jpg",
     when: "Now Playing",
     title: "Gladiator II",
     rate: "6.9/10",
@@ -31,6 +33,8 @@ const content = [
     trailer: "https://www.youtube.com/watch?v=29p_H1JYjQ0",
   },
   {
+    image:
+      "https://www.filmyfenil.com/wp-content/uploads/2024/11/Moana-2-wallpaper.jpg",
     when: "Now Playing",
     title: "Moana 2",
     rate: "6.9/10",
@@ -40,31 +44,32 @@ const content = [
   },
 ];
 
-export function CarouselPlugin() {
-  const plugin = useRef(Autoplay({ delay: 1000, stopOnInteraction: true }));
+export function Carusel(props) {
+  const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
   return (
     <Carousel
       plugins={[plugin.current]}
-      className="w-full border-2 border-green-500"
+      className="w-full h-fit "
       onMouseEnter={plugin.current.stop}
       onMouseLeave={plugin.current.reset}
     >
-      <CarouselContent>
+      <CarouselContent className="relative m-0 ">
         {content.map((item, index) => (
-          <CarouselMovieItem key={index}>
-            <div className="p-1">
-              <Card>
-                <CardContent className="max-w-fit max-h-full flex items-center justify-center ">
-                  <span className="text-4xl font-semibold">{index + 1}</span>
-                </CardContent>
-              </Card>
-            </div>
-          </CarouselMovieItem>
+          <CarouselMovieItem
+            className=""
+            key={index}
+            image={item.image}
+            when={item.when}
+            title={item.title}
+            rate={item.rate}
+            description={item.description}
+            trailer={item.trailer}
+          ></CarouselMovieItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselPrevious className="absolute top-[280px] left-[44px]" />
+      <CarouselNext className="absolute top-[280px] right-[44px]" />
     </Carousel>
   );
 }

@@ -35,7 +35,7 @@ const topRated = [
   },
   {
     image:
-      "https://play-lh.googleusercontent.com/xQEu8I9KM3xHdRqHoOFM6Jdo8Rhr6Xd5zmMDt9-CYsp-AwPvhZ1F5VTzeyNpw5_zbAbi9biVBi77ero86cWl",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIYXxXNwyFkbZeAQF3hu7LDDJaYam0bUWBtQ&s",
     rate: "6.9/10",
     title: "The Apartment",
   },
@@ -67,7 +67,7 @@ const topRated = [
 
 export const TopRatedSection = (props) => {
   return (
-    <div className=" w-fit h-fit grid grid-cols-5 border border-red-500 gap-8">
+    <div className=" w-fit h-fit grid grid-cols-5 border border-red-500 gap-8 mb-[52px]">
       <div className="col-span-5">
         <TitleCard text="Top Rated" title="See more" />
       </div>

@@ -1,12 +1,5 @@
 "use client";
 
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { Footer } from "./_components/Footer";
 import { MovieCard } from "./_components/MovieCard";
 import { NavigationCard } from "./_components/NavigationCard";
@@ -16,10 +9,22 @@ import { SearchResultSection } from "./_components/SearchResultSection";
 import { TitleCard } from "./_components/TitleCard";
 import { TopRatedSection } from "./_components/TopRatedSection";
 import { UpcomingSection } from "./_components/UpcomingSection";
-// import { CarouselItem } from "./_components/CarouselItem";
+
 import { CarouselPlugin } from "./_components/Carousel";
-import { Card, CardContent } from "@/components/ui/card";
+
+import { CarouselMovieItem } from "./_components/CarouselMovieItem";
+import { Carusel } from "./_components/Carusel";
+import { CarouselItem } from "@/components/ui/carousel";
 
 export default function Home() {
-  return <CarouselItem />;
+  return (
+    <div className="w-screen flex flex-col items-center border border-red-600">
+      <NavigationCard />
+      <Carusel />
+      <UpcomingSection />
+      <PopularSection />
+      <TopRatedSection />
+      <Footer />
+    </div>
+  );
 }
