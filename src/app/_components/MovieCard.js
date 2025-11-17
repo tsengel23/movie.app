@@ -1,6 +1,7 @@
 "use client";
 
 import { Star } from "lucide-react";
+import { RateCard } from "./RateCard";
 
 export const MovieCard = (props) => {
   return (
@@ -14,10 +15,11 @@ export const MovieCard = (props) => {
         {/* IMAGE: */}
       </div>
       <div className="w-[230px] h-[95px] p-2">
-        <div className="flex gap-2">
+        <RateCard />
+        {/* <div className="flex gap-2">
           <Star fill="#FDE047" className="text-[#FDE047]" />
-          {props.rate} {/* RATE: */}
-        </div>
+          {props.rate} 
+        </div> */}
         <div>
           <h1 className="text-lg font-normal">{props.title}</h1> {/* TITLE: */}
         </div>

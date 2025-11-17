@@ -12,11 +12,9 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-// import { InputGroup } from "@/components/ui/input";
-// import { InputGroupAddon } from "@/components/ui/input";
-// import { InputGroupInput } from "@/components/ui/input-group";
+
 import { Toggle } from "@radix-ui/react-toggle";
-import { ChevronDown, Film, Moon, Search, SearchIcon } from "lucide-react";
+import { ChevronDown, Film, Moon, SearchIcon } from "lucide-react";
 
 export const NavigationCard = (props) => {
   return (
@@ -46,9 +44,9 @@ export const NavigationCard = (props) => {
         aria-label="Toggle moon"
         size="sm"
         variant="outline"
-        className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-yellow-300 data-[state=on]:*:[svg]:bg-gray-500 border w-9 h-9 flex items-center justify-center rounded-md"
+        className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-yellow-300 border w-9 h-9 flex items-center justify-center rounded-md overflow-hidden"
       >
-        <Moon />
+        <Moon className="w-4 h-4 text-[#18181B]" />
       </Toggle>
     </div>
   );

@@ -15,16 +15,20 @@ import { CarouselPlugin } from "./_components/Carousel";
 import { CarouselMovieItem } from "./_components/CarouselMovieItem";
 import { Carusel } from "./_components/Carusel";
 import { CarouselItem } from "@/components/ui/carousel";
+import { PreviousNext } from "./_components/PreviousNext";
+import { Rate, RateCard } from "./_components/RateCard";
+import { MovieDetail } from "./_components/MovieDetails";
 
 export default function Home() {
-  return (
-    <div className="w-screen flex flex-col items-center border border-red-600">
-      <NavigationCard />
-      <Carusel />
-      <UpcomingSection />
-      <PopularSection />
-      <TopRatedSection />
-      <Footer />
-    </div>
-  );
+  return <MovieDetail />;
 }
+
+// <div className="w-screen flex flex-col items-center border border-red-600">
+//   <PreviousNext />
+//   <NavigationCard />
+//   <Carusel />
+//   <UpcomingSection />
+//   <PopularSection />
+//   <TopRatedSection />
+//   <Footer />
+// </div>

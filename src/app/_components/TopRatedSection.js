@@ -4,8 +4,7 @@ import { TitleCard } from "./TitleCard";
 
 const topRated = [
   {
-    image:
-      "https://upload.wikimedia.org/wikipedia/az/d/d1/Titanik_%28film%2C_1997%29.jpg",
+    image: "https://wallpapercave.com/wp/wp2563744.jpg",
     rate: "6.9/10",
     title: "Titanic",
   },
@@ -35,7 +34,7 @@ const topRated = [
   },
   {
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIYXxXNwyFkbZeAQF3hu7LDDJaYam0bUWBtQ&s",
+      "https://image.tmdb.org/t/p/original/hhSRt1KKfRT0yEhEtRW3qp31JFU.jpg",
     rate: "6.9/10",
     title: "The Apartment",
   },
@@ -58,8 +57,7 @@ const topRated = [
     title: "Pulp Fiction",
   },
   {
-    image:
-      "https://m.media-amazon.com/images/I/81AGqBcpYOL._AC_UF1000,1000_QL80_.jpg",
+    image: "https://cdn.wallpapersafari.com/60/72/Y2VgdX.jpg",
     rate: "6.9/10",
     title: "Jurassic Park",
   },

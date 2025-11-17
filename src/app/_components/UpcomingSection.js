@@ -35,7 +35,7 @@ const upcoming = [
   },
   {
     image:
-      "https://m.media-amazon.com/images/I/816P2J1czEL._AC_UF1000,1000_QL80_.jpg",
+      "https://m.media-amazon.com/images/M/MV5BMzc3OWFhZWItMTE2Yy00N2NmLTg1YTktNGVlNDY0ODQ5YjNlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
     rate: "6.9/10",
     title: "Final Destination Bloodlines",
   },
