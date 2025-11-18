@@ -20,7 +20,17 @@ import { Rate, RateCard } from "./_components/RateCard";
 import { MovieDetail } from "./_components/MovieDetails";
 
 export default function Home() {
-  return <MovieDetail />;
+  return (
+    <MovieCard />
+    // <div className="w-screen flex flex-col items-center border border-red-600">
+    //   <NavigationCard />
+    //   <Carusel />
+    //   <UpcomingSection />
+    //   <PopularSection />
+    //   <TopRatedSection />
+    //   <Footer />
+    // </div>
+  );
 }
 
 // <div className="w-screen flex flex-col items-center border border-red-600">

@@ -12,11 +12,15 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-
-import { Toggle } from "@radix-ui/react-toggle";
+import { Toggle } from "@/components/ui/toggle";
 import { ChevronDown, Film, Moon, SearchIcon } from "lucide-react";
 
-export const NavigationCard = (props) => {
+type NavigationCardProps = {
+  type: string;
+  size: number;
+};
+
+export const NavigationCard = (props: NavigationCardProps) => {
   return (
     <div className="w-full h-fit flex justify-between px-20 py-3 mb-6">
       <h1 className="flex gap-2 text-[#4338CA] italic font-bold text-base">
@@ -29,10 +33,7 @@ export const NavigationCard = (props) => {
           </PopoverTrigger>
           <PopoverContent>Place content for the popover here.</PopoverContent>
         </Popover>
-        <InputGroup
-          className="w-95 h-9 border border-[#E4E4E7] rounded-lg text-sm font-normal py-2"
-          type="text"
-        >
+        <InputGroup className="w-95 h-9 border border-[#E4E4E7] rounded-lg text-sm font-normal py-2">
           <InputGroupInput placeholder=" Search..." />
           <InputGroupAddon>
             <SearchIcon />

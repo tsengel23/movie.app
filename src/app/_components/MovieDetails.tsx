@@ -3,7 +3,8 @@
 import { Button } from "@/components/ui/button";
 import { Star } from "lucide-react";
 
-export const MovieDetail = (props) => {
+type MovieDetailProps = {};
+export const MovieDetail = (props: MovieDetailProps) => {
   return (
     <div className="w-[1080px] h-fit flex flex-col gap-6 border border-green-500">
       <div className="w-full h-fit flex justify-between border">

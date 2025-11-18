@@ -4,7 +4,14 @@ import { Button } from "@/components/ui/button";
 import { CarouselItem } from "@/components/ui/carousel";
 import { Play, Star } from "lucide-react";
 
-export const CarouselMovieItem = (props) => {
+type CarouselMovieProps = {
+  image?: string;
+  when: string;
+  title: string;
+  rate: number;
+  description: string;
+};
+export const CarouselMovieItem = (props: CarouselMovieProps) => {
   return (
     <CarouselItem className={"pl-0"}>
       <div className="w-full h-fit relative border border-red-600 ">

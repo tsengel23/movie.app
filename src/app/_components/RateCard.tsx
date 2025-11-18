@@ -2,7 +2,13 @@
 
 import { Star } from "lucide-react";
 
-export const RateCard = (props) => {
+type RateCardProps = {
+  rate:number;
+}
+ 
+
+
+export const RateCard = (props:RateCardProps) => {
   return (
     <div className="flex gap-2 items-center">
       <Star fill="#FDE047" className="text-[#FDE047]" />
