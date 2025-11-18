@@ -15,10 +15,7 @@ import {
 import { Toggle } from "@/components/ui/toggle";
 import { ChevronDown, Film, Moon, SearchIcon } from "lucide-react";
 
-type NavigationCardProps = {
-  type: string;
-  size: number;
-};
+type NavigationCardProps = {};
 
 export const NavigationCard = (props: NavigationCardProps) => {
   return (

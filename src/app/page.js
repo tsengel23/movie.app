@@ -13,15 +13,17 @@ import { UpcomingSection } from "./_components/UpcomingSection";
 import { CarouselPlugin } from "./_components/Carousel";
 
 import { CarouselMovieItem } from "./_components/CarouselMovieItem";
+
 import { Carusel } from "./_components/Carusel";
 import { CarouselItem } from "@/components/ui/carousel";
 import { PreviousNext } from "./_components/PreviousNext";
 import { Rate, RateCard } from "./_components/RateCard";
 import { MovieDetail } from "./_components/MovieDetails";
+import Carousel from "@/components/ui/embla-carousel";
 
 export default function Home() {
   return (
-    <MovieCard />
+    <Carousel />
     // <div className="w-screen flex flex-col items-center border border-red-600">
     //   <NavigationCard />
     //   <Carusel />

@@ -10,6 +10,7 @@ type CarouselMovieProps = {
   title: string;
   rate: number;
   description: string;
+  trailer: string;
 };
 export const CarouselMovieItem = (props: CarouselMovieProps) => {
   return (

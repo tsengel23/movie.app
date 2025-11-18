@@ -2,7 +2,14 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star } from "lucide-react";
 
-export const SearchResult = (props) => {
+type SearchResultProps = {
+  image: string;
+  title: string;
+  rate: number;
+  date: string;
+};
+
+export const SearchResult = (props: SearchResultProps) => {
   return (
     <div className="w-fit h-fit flex justify-between p-2  gap-4">
       <img

@@ -2,7 +2,8 @@
 
 import { Film, Mail, Phone } from "lucide-react";
 
-export const Footer = (props) => {
+type FooterProps = {};
+export const Footer = (props: FooterProps) => {
   return (
     <div className="bg-indigo-700 flex justify-center items-center px-20 py-10 w-full h-fit">
       <div className="flex gap-30 ">

@@ -2,8 +2,11 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Ghost } from "lucide-react";
-
-export const TitleCard = (props) => {
+type TitleCardProps = {
+  text: string;
+  title: string;
+};
+export const TitleCard = (props: TitleCardProps) => {
   return (
     <div className="flex justify-between border ">
       <h1 className="text-[#09090B] font-semibold text-2xl ">{props.text}</h1>
