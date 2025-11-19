@@ -23,15 +23,14 @@ import Carousel from "@/components/ui/embla-carousel";
 
 export default function Home() {
   return (
-    <Carousel />
-    // <div className="w-screen flex flex-col items-center border border-red-600">
-    //   <NavigationCard />
-    //   <Carusel />
-    //   <UpcomingSection />
-    //   <PopularSection />
-    //   <TopRatedSection />
-    //   <Footer />
-    // </div>
+    <div className="w-screen flex flex-col items-center border border-red-600">
+      <NavigationCard />
+      <Carusel />
+      <UpcomingSection />
+      <PopularSection />
+      <TopRatedSection />
+      <Footer />
+    </div>
   );
 }
 

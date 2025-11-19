@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/popover";
 import { Toggle } from "@/components/ui/toggle";
 import { ChevronDown, Film, Moon, SearchIcon } from "lucide-react";
+import { ModeToggle } from "./ModeToggle";
 
 type NavigationCardProps = {};
 
@@ -38,14 +39,15 @@ export const NavigationCard = (props: NavigationCardProps) => {
         </InputGroup>
       </div>
 
-      <Toggle
+      {/* <Toggle
         aria-label="Toggle moon"
         size="sm"
         variant="outline"
         className="data-[state=on]:bg-transparent data-[state=on]:*:[svg]:fill-yellow-300 border w-9 h-9 flex items-center justify-center rounded-md overflow-hidden"
       >
         <Moon className="w-4 h-4 text-[#18181B]" />
-      </Toggle>
+      </Toggle> */}
+      <ModeToggle />
     </div>
   );
 };

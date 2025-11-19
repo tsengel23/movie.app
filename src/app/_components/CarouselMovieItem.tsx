@@ -34,10 +34,7 @@ export const CarouselMovieItem = (props: CarouselMovieProps) => {
           <p className="w-[302px]  text-[#FAFAFA] text-xs font-normal">
             {props.description}
           </p>
-          <Button
-            variant="outline"
-            className="w-[145px]  flex gap-2 px-4 py-2 bg-[#F4F4F5] text-[#18181B] text-sm font-medium hover:bg-gray-300   "
-          >
+          <Button className="w-[145px]  flex gap-2 px-4 py-2 bg-[#F4F4F5] text-[#18181B] text-sm font-medium hover:bg-gray-300   ">
             <Play /> <a href="#">Watch Trailer</a>
           </Button>
         </div>
