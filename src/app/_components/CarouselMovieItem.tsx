@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { CarouselItem } from "@/components/ui/carousel";
 import { Play, Star } from "lucide-react";
+// import { Dots } from "./Dots";
 
 type CarouselMovieProps = {
   image?: string;
@@ -15,9 +16,9 @@ type CarouselMovieProps = {
 export const CarouselMovieItem = (props: CarouselMovieProps) => {
   return (
     <CarouselItem className={"pl-0"}>
-      <div className="w-full h-fit relative border border-red-600 ">
+      <div className="w-full h-fit relative border border-green-600 flex flex-col items-center ">
         <img
-          className="w-screen h-[600px] object-cover z-10"
+          className="w-screen h-[600px] object-cover z-1"
           src={props.image}
         />
         <div className="flex flex-col w-[404px] h-[264px] gap-4 absolute bottom-[158] left-[140px] z-1 border border-red-600">
@@ -38,6 +39,9 @@ export const CarouselMovieItem = (props: CarouselMovieProps) => {
             <Play /> <a href="#">Watch Trailer</a>
           </Button>
         </div>
+        {/* <div className="absolute  bottom-9 z-1">
+          <Dots />
+        </div> */}
       </div>
     </CarouselItem>
   );

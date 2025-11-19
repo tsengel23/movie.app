@@ -3,6 +3,7 @@
 import { Footer } from "./_components/Footer";
 import { MovieCard } from "./_components/MovieCard";
 import { NavigationCard } from "./_components/NavigationCard";
+import { Dots } from "./_components/Dots";
 import { PopularSection } from "./_components/PopularSection";
 import { SearchResult } from "./_components/SearchResult";
 import { SearchResultSection } from "./_components/SearchResultSection";
@@ -23,14 +24,15 @@ import Carousel from "@/components/ui/embla-carousel";
 
 export default function Home() {
   return (
-    <div className="w-screen flex flex-col items-center border border-red-600">
-      <NavigationCard />
-      <Carusel />
-      <UpcomingSection />
-      <PopularSection />
-      <TopRatedSection />
-      <Footer />
-    </div>
+    <Carousel />
+    // <div className="w-screen flex flex-col items-center border border-red-600">
+    //   <NavigationCard />
+    //   <Carusel />
+    //   <UpcomingSection />
+    //   <PopularSection />
+    //   <TopRatedSection />
+    //   <Footer />
+    // </div>
   );
 }
 
