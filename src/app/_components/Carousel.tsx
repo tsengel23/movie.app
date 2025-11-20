@@ -1,10 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import "./styles.css";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 import { Slide } from "./Slide";
+
+type SlideProps = {
+  image?: string;
+  when: string;
+  title: string;
+  rate: number;
+  description: string;
+};
 
 const content = [
   {
@@ -38,7 +46,7 @@ const content = [
 ];
 
 export default function App() {
-  const [currentSlide, setCurrentSlide] = React.useState(0);
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     initial: 0,
@@ -55,23 +63,59 @@ export default function App() {
       <div className="navigation-wrapper">
         <div ref={sliderRef} className="keen-slider">
           <div className="keen-slider__slide number-slide1">
-            <Slide />
+            <Slide
+              image="string"
+              description="string"
+              when="string"
+              title="fhgd"
+              rate={8.7}
+            />
           </div>
           <div className="keen-slider__slide number-slide2">
-            <Slide />
+            <Slide
+              image="string"
+              description="string"
+              when="string"
+              title="string"
+              rate={7}
+            />
           </div>
           <div className="keen-slider__slide number-slide3">
-            <Slide />
+            <Slide
+              image="string"
+              description="string"
+              when="string"
+              title="string"
+              rate={9}
+            />
           </div>
-          <div className="keen-slider__slide number-slide4">
-            <Slide />
-          </div>
-          <div className="keen-slider__slide number-slide5">
-            <Slide />
-          </div>
-          <div className="keen-slider__slide number-slide6">
-            <Slide />
-          </div>
+          {/* <div className="keen-slider__slide number-slide4">
+            <Slide
+              image="string"
+              description="string"
+              when="string"
+              title="string"
+              rate="number"
+            />
+          </div> */}
+          {/* <div className="keen-slider__slide number-slide5">
+            <Slide
+              image="string"
+              description="string"
+              when="string"
+              title="string"
+              rate="number"
+            />
+          </div> */}
+          {/* <div className="keen-slider__slide number-slide6">
+            <Slide
+              image="string"
+              description="string"
+              when="string"
+              title="string"
+              rate="number"
+            />
+          </div> */}
         </div>
         {loaded && instanceRef.current && (
           <>

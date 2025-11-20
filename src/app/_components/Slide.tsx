@@ -9,7 +9,6 @@ type SlideProps = {
   title: string;
   rate: number;
   description: string;
-  trailer: string;
 };
 
 export const Slide = (props: SlideProps) => {
@@ -22,7 +21,7 @@ export const Slide = (props: SlideProps) => {
           <h1 className="text-white text-4xl font-extrabold">{props.title}</h1>
           <div className="flex gap-2 text-white">
             <Star fill="#FDE047" className="border text-[#FDE047]" />
-            {props.rate}
+            {/* {props.rate} */}
           </div>
         </div>
         <p className="w-[302px]  text-[#FAFAFA] text-xs font-normal">
