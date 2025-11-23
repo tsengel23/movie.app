@@ -11,17 +11,14 @@ type CarouselMovieProps = {
   title: string;
   rate: number;
   description: string;
-  trailer: string;
 };
+
 export const CarouselMovieItem = (props: CarouselMovieProps) => {
   return (
     <CarouselItem className={"pl-0"}>
       <div className="w-full h-fit relative border border-green-600 flex flex-col items-center ">
-        <img
-          className="w-screen h-[600px] object-cover z-1"
-          src={props.image}
-        />
-        <div className="flex flex-col w-[404px] h-[264px] gap-4 absolute bottom-[158] left-[140px] z-1 border border-red-600">
+        <img className="w-full h-[600px] object-cover z-1" src={props.image} />
+        <div className="flex flex-col w-[404px] h-fit gap-4 absolute bottom-[158] left-[140px] z-1 border border-red-600">
           <div>
             <p className="text-white text-base font-normal">{props.when} :</p>
             <h1 className="text-white text-4xl font-extrabold">

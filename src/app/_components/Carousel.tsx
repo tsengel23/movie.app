@@ -1,9 +1,11 @@
 "use client";
+import "keen-slider/keen-slider.min.css";
+import KeenSlider from "keen-slider";
 
 import { useState } from "react";
 import "./styles.css";
 import { useKeenSlider } from "keen-slider/react";
-import "keen-slider/keen-slider.min.css";
+
 import { Slide } from "./Slide";
 
 type SlideProps = {
