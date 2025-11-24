@@ -1,6 +1,7 @@
 "use client";
 
-import { Badge, ChevronRight } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { ChevronRight } from "lucide-react";
 
 type GenreItemProps = {
   id: number;
@@ -10,8 +11,9 @@ type GenreItemProps = {
 export const GenreItem = (props: GenreItemProps) => {
   return (
     <div>
-      <Badge className="w-fit h-5 ">
-        {props.name} <ChevronRight strokeWidth={1} />
+      <Badge className="w-fit h-5 flex cursor-pointer" variant={"default"}>
+        {props.name}
+        <ChevronRight strokeWidth={1} />
       </Badge>
     </div>
   );

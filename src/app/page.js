@@ -11,7 +11,8 @@
 // import { PreviousNext } from "./_components/PreviousNext";
 // import { Rate, RateCard } from "./_components/RateCard";
 // import { MovieDetail } from "./_components/MovieDetails";
-
+// import { GenreItem } from "./_components/GenreItem";
+// import { Dots } from "./_components/Dots";
 /********************************************************************/
 
 import { NavigationCard } from "./_components/NavigationCard";
@@ -20,21 +21,19 @@ import { UpcomingSection } from "./_components/UpcomingSection";
 import { PopularSection } from "./_components/PopularSection";
 import { TopRatedSection } from "./_components/TopRatedSection";
 import { Footer } from "./_components/Footer";
-import { GenreItem } from "./_components/GenreItem";
 
 /*********************************************************************/
 // import { Carousel } from "./_components/Carousel";
 
 export default function MovieApp() {
   return (
-    <GenreItem />
-    // <div className="w-screen flex flex-col items-center border border-red-600">
-    //   <NavigationCard />
-    //   <Carusel />
-    //   <UpcomingSection />
-    //   <PopularSection />
-    //   <TopRatedSection />
-    //   <Footer />
-    // </div>
+    <div className="w-screen flex flex-col items-center border border-red-600">
+      <NavigationCard />
+      <Carusel />
+      <UpcomingSection />
+      <PopularSection />
+      <TopRatedSection />
+      <Footer />
+    </div>
   );
 }

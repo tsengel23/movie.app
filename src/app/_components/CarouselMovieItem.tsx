@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { CarouselItem } from "@/components/ui/carousel";
 import { Play, Star } from "lucide-react";
-// import { Dots } from "./Dots";
+// import { Dots } from "../_components/Dots";
 
 type CarouselMovieProps = {
   image?: string;
@@ -36,9 +36,7 @@ export const CarouselMovieItem = (props: CarouselMovieProps) => {
             <Play /> <a href="#">Watch Trailer</a>
           </Button>
         </div>
-        {/* <div className="absolute  bottom-9 z-1">
-          <Dots />
-        </div> */}
+        <div className="absolute  bottom-9 z-1">{/* <Dots /> */}</div>
       </div>
     </CarouselItem>
   );

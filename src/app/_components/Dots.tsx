@@ -53,17 +53,17 @@
 //   );
 // };
 
-// "use client";
+// // "use client";
 
-// type DotsProps = {
-//   className?: string;
-// };
-// export const Dots = (props: DotsProps) => {
-//   return (
-//     <div className="flex gap-2 ">
-//       <div className="w-2 h-2 bg-white rounded-full cursor-pointer"></div>
-//       <div className="w-2 h-2 bg-white rounded-full cursor-pointer"></div>
-//       <div className="w-2 h-2 bg-white rounded-full cursor-pointer"></div>
-//     </div>
-//   );
-// };
+// // type DotsProps = {
+// //   className?: string;
+// // };
+// // export const Dots = (props: DotsProps) => {
+// //   return (
+// //     <div className="flex gap-2 ">
+// //       <div className="w-2 h-2 bg-black rounded-full cursor-pointer"></div>
+// //       <div className="w-2 h-2 bg-white rounded-full cursor-pointer"></div>
+// //       <div className="w-2 h-2 bg-white rounded-full cursor-pointer"></div>
+// //     </div>
+// //   );
+// // };

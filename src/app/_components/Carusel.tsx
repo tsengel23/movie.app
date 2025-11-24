@@ -102,7 +102,7 @@ export function Carusel(props: CaruselProps) {
       onMouseLeave={plugin.current.reset}
     >
       <CarouselContent className="relative m-0 ">
-        {movies.map((item, index) => (
+        {movies.slice(0, 5).map((item, index) => (
           <CarouselMovieItem
             key={index}
             image={"https://image.tmdb.org/t/p/original/" + item.poster_path}
@@ -118,3 +118,14 @@ export function Carusel(props: CaruselProps) {
     </Carousel>
   );
 }
+
+// <div className="w-fit h-fit flex gap-2 absolute top-[-90%] left-[50%] translate-[50%]">
+//         {movies?.slice(0, 5).map((_, i) => (
+//           <div
+//             key={i}
+//             className={`w-2 h-2 rounded-full ${
+//               i === index ? "bg-white" : "bg-[#ffffff7e]"
+//             }`}
+//           ></div>
+//         ))}
+//       </div>
