@@ -12,7 +12,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Toggle } from "@/components/ui/toggle";
+
 import { ChevronDown, Film, Moon, SearchIcon } from "lucide-react";
 import { ModeToggle } from "./ModeToggle";
 import { useEffect, useState } from "react";

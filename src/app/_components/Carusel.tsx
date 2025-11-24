@@ -74,6 +74,13 @@ export function Carusel(props: CaruselProps) {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
   const [movies, setMovies] = useState<Movie[]>([]);
+
+  //
+  // const [api, setApi] = useState<any>(null);
+  // const [current, setCurrent] = useState(0);
+  // const [count, setCount] = useState(0);
+  //
+
   useEffect(() => {
     const getData = async () => {
       const res = await fetch(
@@ -94,38 +101,57 @@ export function Carusel(props: CaruselProps) {
     getData();
   });
 
+  //
+  // useEffect(() => {
+  //   if (!api) return;
+
+  //   setCount(api.scrollSnapList().length);
+
+  //   api.on("select", () => {
+  //     setCurrent(api.selectedScrollSnap());
+  //   });
+  // }, [api]);
+  //
+
   return (
-    <Carousel
-      plugins={[plugin.current]}
-      className="w-full h-fit "
-      onMouseEnter={plugin.current.stop}
-      onMouseLeave={plugin.current.reset}
-    >
-      <CarouselContent className="relative m-0 ">
-        {movies.slice(0, 5).map((item, index) => (
-          <CarouselMovieItem
+    <div className="relative w-full h-fit">
+      <Carousel
+        plugins={[plugin.current]}
+        className="w-full h-fit "
+        onMouseEnter={plugin.current.stop}
+        onMouseLeave={plugin.current.reset}
+        //
+        // setApi={setApi}
+        //
+      >
+        <CarouselContent className="relative m-0 ">
+          {movies.slice(0, 5).map((item, index) => (
+            <CarouselMovieItem
+              key={index}
+              image={"https://image.tmdb.org/t/p/original/" + item.poster_path}
+              when={item.release_date}
+              title={item.title}
+              rate={item.vote_average}
+              description={item.overview}
+            ></CarouselMovieItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="absolute top-[280px] left-[44px]" />
+        <CarouselNext className="absolute top-[280px] right-[44px]" />
+      </Carousel>
+      {/*  */}
+      {/* <div className="flex gap-2 justify-center mt-4">
+        {Array.from({ length: count }).map((_, index) => (
+          <button
             key={index}
-            image={"https://image.tmdb.org/t/p/original/" + item.poster_path}
-            when={item.release_date}
-            title={item.title}
-            rate={item.vote_average}
-            description={item.overview}
-          ></CarouselMovieItem>
+            onClick={() => api?.scrollTo(index)}
+            className={`h-3 w-3 rounded-full transition-all
+        ${current === index ? "bg-red-700 w-6" : "bg-gray-400"}`}
+          />
         ))}
-      </CarouselContent>
-      <CarouselPrevious className="absolute top-[280px] left-[44px]" />
-      <CarouselNext className="absolute top-[280px] right-[44px]" />
-    </Carousel>
+      </div> */}
+
+      {/*  */}
+    </div>
   );
 }
-
-// <div className="w-fit h-fit flex gap-2 absolute top-[-90%] left-[50%] translate-[50%]">
-//         {movies?.slice(0, 5).map((_, i) => (
-//           <div
-//             key={i}
-//             className={`w-2 h-2 rounded-full ${
-//               i === index ? "bg-white" : "bg-[#ffffff7e]"
-//             }`}
-//           ></div>
-//         ))}
-//       </div>

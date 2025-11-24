@@ -11,7 +11,10 @@ type GenreItemProps = {
 export const GenreItem = (props: GenreItemProps) => {
   return (
     <div>
-      <Badge className="w-fit h-5 flex cursor-pointer" variant={"default"}>
+      <Badge
+        className="w-fit h-5 flex items-center gap-2 cursor-pointer"
+        variant={"default"}
+      >
         {props.name}
         <ChevronRight strokeWidth={1} />
       </Badge>

@@ -100,10 +100,10 @@ export const UpcomingSection = (props: UpcomingSectionProps) => {
         {
           method: "GET",
           headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzY2ExNmNlNjA1MzAzNTk5MjIwNGYxMzI1ZDAwZGIwNiIsIm5iZiI6MTc2MzUyMTk5NS41MTcsInN1YiI6IjY5MWQzNWNiMTg0ZThlNTY0ZjJkNDE4MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jl3UrTVIxBBbn3K1fvJ14YrplMU9UtuwKtkSW3lVa78",
+            Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
             accept: "application/json",
           },
+          next: { revalidate: 3600 }, // 1 цаг тутам шинэчлэнэ
         }
       );
       const data = (await res.json()) as Response;
@@ -115,7 +115,7 @@ export const UpcomingSection = (props: UpcomingSectionProps) => {
   return (
     <div className=" w-fit h-fit grid grid-cols-5 border border-red-500 gap-8 mb-[52px]">
       <div className="col-span-5">
-        <TitleCard text="Upcoming" title="See more" />
+        <TitleCard text="Upcoming" title="See more" href="/upcoming" />
       </div>
       {movies.slice(0, 10).map((item) => {
         return (
