@@ -27,6 +27,6 @@ type Genre = {
   name: string;
 };
 
-type Response = {
+type Response1 = {
   genres: Genre[];
 };

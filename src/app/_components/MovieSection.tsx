@@ -26,75 +26,82 @@ type Response = {
   total_pages: number;
   total_results: number;
 };
-// const topRated = [
+// const popular = [
 //   {
-//     image: "https://wallpapercave.com/wp/wp2563744.jpg",
+//     image:
+//       "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg",
 //     rate: 6.9,
-//     title: "Titanic",
+//     title: "The Shawshank Redemption",
 //   },
 //   {
 //     image:
-//       "https://m.media-amazon.com/images/I/81lIu0aTZnL._AC_UF1000,1000_QL80_.jpg",
+//       "https://m.media-amazon.com/images/M/MV5BNGEwYjgwOGQtYjg5ZS00Njc1LTk2ZGEtM2QwZWQ2NjdhZTE5XkEyXkFqcGc@._V1_.jpg",
 //     rate: 6.9,
-//     title: "One Flew Over the Cuckoo's Nest",
+//     title: "The Godfather",
 //   },
 //   {
 //     image:
-//       "https://m.media-amazon.com/images/M/MV5BN2E5NzI2ZGMtY2VjNi00YTRjLWI1MDUtZGY5OWU1MWJjZjRjXkEyXkFqcGc@._V1_.jpg",
+//       "https://m.media-amazon.com/images/M/MV5BMDQ5MWU2YWUtNTQ4OC00Njk5LWI0NzctMjM4OGZiNmZmNGViXkEyXkFqcGc@._V1_.jpg",
 //     rate: 6.9,
-//     title: "Goodfellas",
+//     title: "The Dark Knight",
 //   },
 //   {
 //     image:
-//       "https://upload.wikimedia.org/wikipedia/en/d/d4/Rogue_One%2C_A_Star_Wars_Story_poster.png",
+//       "https://upload.wikimedia.org/wikipedia/commons/b/b5/12_Angry_Men_%281957_film_poster%29.jpg",
 //     rate: 6.9,
-//     title: "Star Wars: Rogue One",
+//     title: "12 Angry Men",
 //   },
 //   {
 //     image:
-//       "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Some_Like_It_Hot_%281959_poster%29.png/960px-Some_Like_It_Hot_%281959_poster%29.png",
+//       "https://upload.wikimedia.org/wikipedia/en/4/48/Lord_Rings_Return_King.jpg",
 //     rate: 6.9,
-//     title: "Some Like It Hot",
+//     title: "The Lord of the Rings: The Return of the King",
 //   },
 //   {
 //     image:
-//       "https://image.tmdb.org/t/p/original/hhSRt1KKfRT0yEhEtRW3qp31JFU.jpg",
+//       "https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_FMjpg_U00_.jpg",
 //     rate: 6.9,
-//     title: "The Apartment",
+//     title: "Interstellar",
 //   },
 //   {
 //     image:
-//       "https://m.media-amazon.com/images/I/81-pdmu-6ML._AC_UF1000,1000_QL80_.jpg",
+//       "https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/se7en_2.png",
 //     rate: 6.9,
-//     title: "Jaws",
+//     title: "Seven",
 //   },
 //   {
 //     image:
-//       "https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p24674_p_v13_bc.jpg",
+//       "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/It%27s_a_Wonderful_Life_%281946_poster%29.jpeg/960px-It%27s_a_Wonderful_Life_%281946_poster%29.jpeg",
 //     rate: 6.9,
-//     title: "Gladiator",
+//     title: "It's a Wonderful Life",
 //   },
 //   {
 //     image:
-//       "https://m.media-amazon.com/images/I/81UTs3sC5hL._AC_UF894,1000_QL80_.jpg",
+//       "https://m.media-amazon.com/images/M/MV5BYzc0ODMyMzctZTA5Zi00MGZhLWE0NTItZjJhOTE3OWMxZjBlXkEyXkFqcGc@._V1_.jpg",
 //     rate: 6.9,
-//     title: "Pulp Fiction",
+//     title: "Seven Samurai",
 //   },
 //   {
-//     image: "https://cdn.wallpapersafari.com/60/72/Y2VgdX.jpg",
+//     image:
+//       "https://m.media-amazon.com/images/M/MV5BNDdhOGJhYzctYzYwZC00YmI2LWI0MjctYjg4ODdlMDExYjBlXkEyXkFqcGc@._V1_FMjpg_U00_.jpg",
 //     rate: 6.9,
-//     title: "Jurassic Park",
+//     title: "The Silence of the Lambs",
 //   },
 // ];
 
-type TopRatedSectionProps = {};
+type MovieSectionProps = {
+  categoryName: string;
+  title: string;
+};
 
-export const TopRatedSection = (props: TopRatedSectionProps) => {
+export const MovieSection = (props: MovieSectionProps) => {
+  const { categoryName, title } = props;
+
   const [movies, setMovies] = useState<Movie[]>([]);
   useEffect(() => {
     const getData = async () => {
       const res = await fetch(
-        "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
+        `https://api.themoviedb.org/3/movie/${categoryName}?language=en-US&page=1`,
         {
           method: "GET",
           headers: {
@@ -115,7 +122,7 @@ export const TopRatedSection = (props: TopRatedSectionProps) => {
   return (
     <div className=" w-fit h-fit grid grid-cols-5 border border-red-500 gap-8 mb-[52px]">
       <div className="col-span-5">
-        <TitleCard title="Top Rated" href={`/category/topRated`} />
+        <TitleCard title={title} href={`/category/${categoryName}`} />
       </div>
       {movies.slice(0, 10).map((item) => {
         return (
