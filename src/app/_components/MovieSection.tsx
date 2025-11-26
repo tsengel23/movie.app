@@ -120,7 +120,7 @@ export const MovieSection = (props: MovieSectionProps) => {
     getData();
   });
   return (
-    <div className=" w-fit h-fit grid grid-cols-5 border border-red-500 gap-8 mb-[52px]">
+    <div className=" w-fit h-fit grid grid-cols-5 border border-red-500 gap-8 mt-[52px]">
       <div className="col-span-5">
         <TitleCard title={title} href={`/category/${categoryName}`} />
       </div>

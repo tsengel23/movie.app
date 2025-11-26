@@ -9,7 +9,12 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-export function PreviousNext({ previousUrl, nextUrl }) {
+type PreviousNextProps = {
+  previousUrl: string;
+  nextUrl: string;
+};
+
+export function PreviousNext({ previousUrl, nextUrl }: PreviousNextProps) {
   return (
     <Pagination>
       <PaginationContent>
@@ -25,9 +30,17 @@ export function PreviousNext({ previousUrl, nextUrl }) {
           <PaginationLink href="#">2</PaginationLink>
         </PaginationItem>
 
-        <PaginationItem>
-          <PaginationEllipsis />
+        <PaginationItem className=" hover:border rounded-md">
+          <PaginationLink href="#">3</PaginationLink>
         </PaginationItem>
+
+        <PaginationItem className=" hover:border rounded-md">
+          <PaginationLink href="#">4</PaginationLink>
+        </PaginationItem>
+
+        {/* <PaginationItem>
+          <PaginationEllipsis />
+        </PaginationItem> */}
 
         <PaginationItem className=" hover:border rounded-md">
           <PaginationLink href="#">5</PaginationLink>

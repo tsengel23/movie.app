@@ -1,6 +1,7 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { ChevronRight } from "lucide-react";
 
 type GenreItemProps = {
@@ -11,13 +12,13 @@ type GenreItemProps = {
 export const GenreItem = (props: GenreItemProps) => {
   return (
     <div>
-      <Badge
+      <Button
         className="w-fit h-5 flex items-center gap-2 cursor-pointer"
-        variant={"default"}
+        variant={"outline"}
       >
         {props.name}
         <ChevronRight strokeWidth={1} />
-      </Badge>
+      </Button>
     </div>
   );
 };

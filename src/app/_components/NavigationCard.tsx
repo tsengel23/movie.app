@@ -17,6 +17,7 @@ import { ChevronDown, Film, Moon, SearchIcon } from "lucide-react";
 import { ModeToggle } from "./ModeToggle";
 import { useEffect, useState } from "react";
 import { GenreItem } from "./GenreItem";
+import Link from "next/link";
 
 export type Genre = {
   id: number;
@@ -55,15 +56,17 @@ export const NavigationCard = () => {
 
   return (
     <div className="w-full h-fit flex justify-between px-20 py-3 mb-6">
-      <h1 className="flex gap-2 text-[#4338CA] italic font-bold text-base">
-        <Film /> Movie Z
-      </h1>
+      <Link href="#" className="">
+        <h1 className="flex gap-2 text-[#4338CA] italic font-bold text-base">
+          <Film /> Movie Z
+        </h1>
+      </Link>
       <div className="flex gap-3">
         <Popover>
           <PopoverTrigger className="border border-[#E4E4E7] font-medium rounded-lg text-sm px-4 py-1.5 flex gap-2 items-center ">
             <ChevronDown /> GENRE
           </PopoverTrigger>
-          <PopoverContent className="relative left-[31%] w-[500px]">
+          <PopoverContent className="relative left-[40%] w-[500px]">
             <div className="flex flex-col">
               <div className="h-15 flex flex-col gap-1">
                 <h1 className="font-semibold text-2xl">Genres</h1>

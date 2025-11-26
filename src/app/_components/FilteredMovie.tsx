@@ -1,18 +1,11 @@
 "use client";
 
-import { Carusel } from "@/app/_components/Carusel";
-import { Footer } from "@/app/_components/Footer";
 import { MovieCard } from "@/app/_components/MovieCard";
-import { MovieSection } from "@/app/_components/MovieSection";
-import { MovieSections } from "@/app/_components/MovieSections";
-import { NavigationCard } from "@/app/_components/NavigationCard";
 import { PreviousNext } from "@/app/_components/PreviousNext";
 import { TitleCard } from "@/app/_components/TitleCard";
-
 import { useParams } from "next/navigation";
-import { use } from "react";
 import { useEffect, useState } from "react";
-//
+
 export type Movie = {
   adult: boolean;
   backdrop_path: string;
@@ -41,7 +34,7 @@ type Params = {
   categoryName: string;
 };
 
-export default function CategoryPage() {
+export const FilteredMovie = () => {
   const { categoryName } = useParams<Params>();
 
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -68,13 +61,8 @@ export default function CategoryPage() {
 
     getData();
   });
-
   return (
     <div className="w-screen flex flex-col items-center border border-red-600 relative">
-      <NavigationCard />
-
-      {/*  */}
-
       <div className=" w-fit h-fit grid grid-cols-5 border border-red-500 gap-8 mb-[52px]">
         <div className="col-span-5">
           <TitleCard title={categoryName} />
@@ -91,16 +79,8 @@ export default function CategoryPage() {
         })}
       </div>
       <div className="absolute top-[85%] right-[15%]">
-        <PreviousNext />
+        {/* <PreviousNext /> */}
       </div>
-
-      {/*  */}
-
-      <Footer />
     </div>
   );
-}
-
-{
-  /* <MovieSection title={categoryName} categoryName={categoryName} />; */
-}
+};

@@ -16,7 +16,10 @@ export const TitleCard = (props: TitleCardProps) => {
 
       {props.href && (
         <Link href={props.href}>
-          <Button className="flex gap-2 px-4 py-2 bg-transparent text-sm font-medium text-black ">
+          <Button
+            variant="link"
+            className="flex gap-2 px-4 py-2 bg-transparent text-sm font-medium text-black "
+          >
             See more <ArrowRight />
           </Button>
         </Link>

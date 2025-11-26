@@ -1,16 +1,19 @@
 "use client";
 
 import { Film, Mail, Phone } from "lucide-react";
+import Link from "next/link";
 
 type FooterProps = {};
 export const Footer = (props: FooterProps) => {
   return (
-    <div className="bg-indigo-700 flex justify-center items-center px-20 py-10 w-full h-fit">
+    <div className="bg-indigo-700 flex justify-center items-center px-20 py-10 w-full h-fit mt-[51px]">
       <div className="flex gap-30 ">
         <div className="w-[247px] h-50 ">
-          <h1 className="flex gap-2 text-[#FAFAFA] italic font-semibold text-base">
-            <Film /> Movie Z
-          </h1>
+          <Link href="#" className="">
+            <h1 className="flex gap-2 text-[#FAFAFA] italic font-semibold text-base">
+              <Film /> Movie Z
+            </h1>
+          </Link>
           <p className="text-[#FAFAFA] text-sm font-normal leading-5 regular mt-3">
             © 2024 Movie Z. All Rights Reserved.
           </p>
