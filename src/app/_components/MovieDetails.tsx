@@ -14,11 +14,64 @@ import {
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 
+/*********/
+type castObj = {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  order: number;
+};
+type crewObj = {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+  credit_id: string;
+  department: string;
+  job: string;
+};
+
+type credit = {
+  id: number;
+  cast: castObj[];
+  crew: crewObj[];
+};
+/**********/
+type vidObj = {
+  iso_639_1: string;
+  iso_3166_1: string;
+  name: string;
+  key: string;
+  site: string;
+  size: number;
+  type: string;
+  official: boolean;
+  published_at: string;
+  id: string;
+};
+
+type video = {
+  id: number;
+  results: vidObj[];
+};
+/************/
 type MovieDetailProps = {};
 export const MovieDetail = (props: MovieDetailProps) => {
   return (
     <Dialog>
-      <div className="w-full h-screen flex flex-col items-center border border-red-600">
+      <div className="w-full h-screen flex flex-col items-center border-4 border-red-600">
         <NavigationCard />
         <div className="w-[1080px] h-fit flex flex-col gap-6 border border-green-500">
           <div className="w-full h-fit flex justify-between border">

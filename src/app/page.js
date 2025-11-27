@@ -13,12 +13,12 @@ import { Dialog } from "@radix-ui/react-dialog";
 
 export default function MovieApp() {
   return (
-    <MovieDetail />
-    // <div className="w-screen flex flex-col items-center border border-red-600">
-    //   <NavigationCard />
-    //   <Carusel />
-    //   <MovieSections />
-    //   <Footer />
-    // </div>
+    // <MovieDetail />
+    <div className="w-screen flex flex-col items-center border border-red-600">
+      <NavigationCard />
+      <Carusel />
+      <MovieSections />
+      <Footer />
+    </div>
   );
 }
