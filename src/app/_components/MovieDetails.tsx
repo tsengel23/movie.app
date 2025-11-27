@@ -12,6 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Badge } from "@/components/ui/badge";
 
 type MovieDetailProps = {};
 export const MovieDetail = (props: MovieDetailProps) => {
@@ -53,20 +54,17 @@ export const MovieDetail = (props: MovieDetailProps) => {
             </div>
           </div>
           <div className="w-[1080px] h-[428px] flex gap-8 border">
-            <div
-              className="w-[290px] rounded-sm h-full border bg-start bg-cover object-fill"
-              style={{
-                backgroundImage:
-                  "https://wallpapers.com/images/featured/action-movie-pb93e7r343erqgtt.jpg",
-              }}
-            ></div>
-            <div
-              className="w-[760px] rounded-sm h-full border bg-start bg-cover object-fill relative"
-              style={{
-                backgroundImage:
-                  "https://wallpapers.com/images/featured/action-movie-pb93e7r343erqgtt.jpg",
-              }}
-            >
+            <div className="w-[290px] rounded-sm h-full border bg-start bg-cover object-fill">
+              <img
+                src="https://wallpapercave.com/wp/wp2563744.jpg"
+                className="w-[290px] h-[428px] object-cover"
+              />
+            </div>
+            <div className="w-[760px] rounded-sm h-full border bg-start bg-cover object-fill relative">
+              <img
+                src="https://wallpapercave.com/wp/wp2563744.jpg"
+                className="w-[760px] h-[428px] object-cover"
+              />
               <div className="absolute flex gap-3  top-[364px] left-6 items-center">
                 <DialogTrigger>
                   <div className="w-10 h-10  flex justify-center items-center rounded-full bg-white border">
@@ -79,12 +77,11 @@ export const MovieDetail = (props: MovieDetailProps) => {
               </div>
             </div>
           </div>
-          <div>
+          <div className=" flex flex-col gap-5 mt-8">
             <div className="flex gap-3">
-              <p>item</p>
-              <p>item</p>
-              <p>item</p>
-              <p>item</p>
+              <Badge variant="outline" className=" ">
+                item
+              </Badge>
             </div>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
@@ -92,17 +89,25 @@ export const MovieDetail = (props: MovieDetailProps) => {
               Sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing
               elit. Sed do eiusmod
             </p>
-            <div className="flex gap-12 pb-3  border border-b-gray-300">
-              <h3 className="text-base font-bold text-[#09090B]">Director</h3>
-              <p className="text-base font-normal text-[#09090B]">Jon M. Chu</p>
-            </div>
-            <div className="flex gap-12 pb-3  border border-b-gray-300">
-              <h3 className="text-base font-bold text-[#09090B]">Director</h3>
-              <p className="text-base font-normal text-[#09090B]">Jon M. Chu</p>
-            </div>
-            <div className="flex gap-12 pb-3  border border-b-gray-300">
-              <h3 className="text-base font-bold text-[#09090B]">Director</h3>
-              <p className="text-base font-normal text-[#09090B]">Jon M. Chu</p>
+            <div className="flex flex-col gap-5 ">
+              <div className="flex gap-12 mt- pb-3  border-b border-b-gray-300">
+                <h3 className="text-base font-bold text-[#09090B]">Director</h3>
+                <p className="text-base font-normal text-[#09090B]">
+                  Jon M. Chu
+                </p>
+              </div>
+              <div className="flex gap-12 pb-3  border-b border-b-gray-300">
+                <h3 className="text-base font-bold text-[#09090B]">Writers</h3>
+                <p className="text-base font-normal text-[#09090B]">
+                  Jon M. Chu
+                </p>
+              </div>
+              <div className="flex gap-12 pb-3  border-b border-b-gray-300">
+                <h3 className="text-base font-bold text-[#09090B]">Stars</h3>
+                <p className="text-base font-normal text-[#09090B]">
+                  Jon M. Chu
+                </p>
+              </div>
             </div>
           </div>
         </div>

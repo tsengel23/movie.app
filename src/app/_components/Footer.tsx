@@ -9,7 +9,7 @@ export const Footer = (props: FooterProps) => {
     <div className="bg-indigo-700 flex justify-center items-center px-20 py-10 w-full h-fit mt-[51px]">
       <div className="flex gap-30 ">
         <div className="w-[247px] h-50 ">
-          <Link href="#" className="">
+          <Link href="./" className="">
             <h1 className="flex gap-2 text-[#FAFAFA] italic font-semibold text-base">
               <Film /> Movie Z
             </h1>

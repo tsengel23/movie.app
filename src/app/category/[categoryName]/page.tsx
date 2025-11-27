@@ -41,6 +41,12 @@ type Params = {
   categoryName: string;
 };
 
+const label: Record<string, string> = {
+  top_rated: "Top Rated",
+  upcoming: "Upcoming",
+  popular: "Popular",
+};
+
 export default function CategoryPage() {
   const { categoryName } = useParams<Params>();
 
@@ -77,7 +83,7 @@ export default function CategoryPage() {
 
       <div className=" w-fit h-fit grid grid-cols-5 border border-red-500 gap-8 mb-[52px]">
         <div className="col-span-5">
-          <TitleCard title={categoryName} />
+          <TitleCard title={label[categoryName]} />
         </div>
         {movies?.map((item) => {
           return (
@@ -90,7 +96,7 @@ export default function CategoryPage() {
           );
         })}
       </div>
-      <div className="absolute top-[85%] right-[15%]">
+      <div className="w-7xl flex justify-end border">
         <PreviousNext />
       </div>
 
@@ -104,3 +110,4 @@ export default function CategoryPage() {
 {
   /* <MovieSection title={categoryName} categoryName={categoryName} />; */
 }
+// absolute top-[85%] right-[15%]

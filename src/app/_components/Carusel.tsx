@@ -133,11 +133,11 @@ export function Carusel(props: CaruselProps) {
               title={item.title}
               rate={item.vote_average}
               description={item.overview}
-            ></CarouselMovieItem>
+            />
           ))}
         </CarouselContent>
-        <CarouselPrevious className="absolute top-[280px] left-[44px]" />
-        <CarouselNext className="absolute top-[280px] right-[44px]" />
+        <CarouselPrevious className="absolute top-[50%] left-[44px]" />
+        <CarouselNext className="absolute top-[50%] right-[44px]" />
       </Carousel>
       {/*  */}
       {/* <div className="flex gap-2 justify-center mt-4">
