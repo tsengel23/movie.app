@@ -2,11 +2,11 @@
 
 import { Button } from "@/components/ui/button";
 import { CarouselItem } from "@/components/ui/carousel";
-// import { DialogTrigger } from "@/components/ui/dialog";
-// import { Dialog } from "@radix-ui/react-dialog";
 import { Play, Star } from "lucide-react";
 import { useEffect, useState } from "react";
 // import { Dots } from "../_components/Dots";
+import React from "react";
+import ReactPlayer from "react-player";
 import {
   Dialog,
   DialogContent,
@@ -22,9 +22,10 @@ type CarouselMovieProps = {
   title: string;
   rate: number;
   description: string;
+  movieId: number;
 };
 
-type Trailers = {
+type Trailer = {
   iso_639_1: string;
   iso_3166_1: string;
   name: string;
@@ -39,14 +40,14 @@ type Trailers = {
 
 type Response = {
   id: number;
-  results: Trailers[];
+  results: Trailer[];
 };
 export const CarouselMovieItem = (props: CarouselMovieProps) => {
-  const [trailers, setTrailers] = useState<Trailers[]>([]);
+  const [trailers, setTrailers] = useState<Trailer[]>([]);
   useEffect(() => {
     const getData = async () => {
       const res = await fetch(
-        "https://api.themoviedb.org/3/movie/movie_id/videos?language=en-US",
+        `https://api.themoviedb.org/3/movie/${props.movieId}/videos?language=en-US`,
         {
           method: "GET",
           headers: {
@@ -59,8 +60,11 @@ export const CarouselMovieItem = (props: CarouselMovieProps) => {
       );
 
       const data = (await res.json()) as Response;
+      console.log(data.results);
+
       setTrailers(data.results);
     };
+
     getData();
   }, []);
 
@@ -95,8 +99,12 @@ export const CarouselMovieItem = (props: CarouselMovieProps) => {
           <div className="absolute  bottom-9 z-1">{/* <Dots /> */}</div>
         </div>
       </CarouselItem>
-      <DialogContent className="w-[1000px] h-[500px] p-0 overflow-hidden">
-        hi
+      <DialogContent className="p-0 overflow-hidden min-w-2xl h-[400px]">
+        <DialogTitle></DialogTitle>
+        <ReactPlayer
+          src={`https://www.youtube.com/watch?v=${trailers[0]?.key}`}
+          style={{ width: "100%", height: "400px" }}
+        />
       </DialogContent>
     </Dialog>
   );

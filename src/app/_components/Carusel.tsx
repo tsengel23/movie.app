@@ -133,6 +133,7 @@ export function Carusel(props: CaruselProps) {
               title={item.title}
               rate={item.vote_average}
               description={item.overview}
+              movieId={item.id}
             />
           ))}
         </CarouselContent>

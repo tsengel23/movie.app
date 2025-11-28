@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Play, Star } from "lucide-react";
 import { NavigationCard } from "./NavigationCard";
 import { Footer } from "./Footer";
+import { useState, useEffect } from "react";
 import {
   Dialog,
   DialogContent,
@@ -13,6 +14,56 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
+/*******************/
+type genre = {
+  id: number;
+  name: string;
+};
+
+type company = {
+  id: number;
+  logo_path: string;
+  name: string;
+  origin_country: string;
+};
+
+type country = {
+  iso_3166_1: string;
+  name: string;
+};
+
+type language = {
+  english_name: string;
+  iso_639_1: string;
+  name: string;
+};
+type detailRes = {
+  adult: boolean;
+  backdrop_path: string;
+  belongs_to_collection: string;
+  budget: number;
+  genres: genre[];
+  homepage: string;
+  id: number;
+  imdb_id: string;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  production_companies: company[];
+  production_countries: country[];
+  release_date: string;
+  revenue: number;
+  runtime: number;
+  spoken_languages: language[];
+  status: string;
+  tagline: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+};
 
 /*********/
 type castObj = {
@@ -43,7 +94,7 @@ type crewObj = {
   job: string;
 };
 
-type credit = {
+type creditRes = {
   id: number;
   cast: castObj[];
   crew: crewObj[];
@@ -62,13 +113,40 @@ type vidObj = {
   id: string;
 };
 
-type video = {
+type videoRes = {
   id: number;
   results: vidObj[];
 };
 /************/
-type MovieDetailProps = {};
-export const MovieDetail = (props: MovieDetailProps) => {
+
+export const MovieDetail = () => {
+  const [trailers, setTrailers] = useState<vidObj[]>([]);
+  const [genre, setGenre] = useState<genre[]>([]);
+  const [image, setImage] = useState<poster_path>("string");
+
+  useEffect(() => {
+    const getData = async () => {
+      const res = await fetch(
+        `https://api.themoviedb.org/3/movie/${movie_id}/videos`,
+        {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzY2ExNmNlNjA1MzAzNTk5MjIwNGYxMzI1ZDAwZGIwNiIsIm5iZiI6MTc2MzUyMTk5NS41MTcsInN1YiI6IjY5MWQzNWNiMTg0ZThlNTY0ZjJkNDE4MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jl3UrTVIxBBbn3K1fvJ14YrplMU9UtuwKtkSW3lVa78",
+          },
+          next: { revalidate: 3600 },
+        }
+      );
+
+      const data = (await res.json()) as Response;
+
+      console.log(data);
+      setTrailers(data.results);
+    };
+
+    getData();
+  }, []);
   return (
     <Dialog>
       <div className="w-full h-screen flex flex-col items-center border-4 border-red-600">

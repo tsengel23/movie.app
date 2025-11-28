@@ -128,6 +128,7 @@ export const MovieSection = (props: MovieSectionProps) => {
         return (
           <MovieCard
             key={item.id}
+            id={item.id}
             image={"https://image.tmdb.org/t/p/w500/" + item.poster_path}
             rate={item.vote_average}
             title={item.title}
