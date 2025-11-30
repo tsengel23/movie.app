@@ -119,13 +119,14 @@ export const PopularSection = (props: PopularSectionProps) => {
       <div className="col-span-5">
         <TitleCard title="popular" href={`/category/popular`} />
       </div>
-      {movies.slice(0, 10).map((item) => {
+      {movies?.slice(0, 10).map((item) => {
         return (
           <MovieCard
             key={item.id}
             image={"https://image.tmdb.org/t/p/w500/" + item.poster_path}
             rate={item.vote_average}
             title={item.title}
+            id={item.id}
           />
         );
       })}

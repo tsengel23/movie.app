@@ -51,18 +51,29 @@ export const Footer = (props: FooterProps) => {
               Follow us
             </p>
             <div className="flex gap-3">
-              <div className="text-[#FAFAFA] text-sm font-medium leading-5 regular">
-                Facebook
-              </div>
-              <div className="text-[#FAFAFA] text-sm font-medium leading-5 regular">
-                Instagram
-              </div>
-              <div className="text-[#FAFAFA] text-sm font-medium leading-5 regular">
-                Twitter
-              </div>
-              <div className="text-[#FAFAFA] text-sm font-medium leading-5 regular">
-                Youtube
-              </div>
+              <Link href="#" target="_blank">
+                <div className="text-[#FAFAFA] text-sm font-medium leading-5 regular">
+                  Facebook
+                </div>
+              </Link>
+
+              <Link href="#" target="_blank">
+                <div className="text-[#FAFAFA] text-sm font-medium leading-5 regular">
+                  Instagram
+                </div>
+              </Link>
+
+              <Link href="#" target="_blank">
+                <div className="text-[#FAFAFA] text-sm font-medium leading-5 regular">
+                  Twitter
+                </div>
+              </Link>
+
+              <Link href="#" target="_blank">
+                <div className="text-[#FAFAFA] text-sm font-medium leading-5 regular">
+                  Youtube
+                </div>
+              </Link>
             </div>
           </div>
         </div>

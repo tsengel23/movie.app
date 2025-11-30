@@ -18,7 +18,7 @@ export const TitleCard = (props: TitleCardProps) => {
         <Link href={props.href}>
           <Button
             variant="link"
-            className="flex gap-2 px-4 py-2 bg-transparent text-sm font-medium text-black "
+            className="flex gap-2 px-4 py-2 bg-transparent text-sm font-medium text-black border-none"
           >
             See more <ArrowRight />
           </Button>

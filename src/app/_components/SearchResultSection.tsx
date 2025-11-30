@@ -1,6 +1,6 @@
 "use client";
 
-import { SearchResult } from "./SearchResult";
+import { MovieSearchCard } from "./MovieSearchCard";
 const searching = [
   {
     image:
@@ -45,7 +45,7 @@ export const SearchResultSection = (props: SearchResultSectionProps) => {
     <div className="flex flex-col ">
       {searching.map((item, index) => {
         return (
-          <SearchResult
+          <MovieSearchCard
             key={index}
             image={item.image}
             title={item.title}

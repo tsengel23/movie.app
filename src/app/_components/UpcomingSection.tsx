@@ -119,13 +119,14 @@ export const UpcomingSection = (props: UpcomingSectionProps) => {
       <div className="col-span-5">
         <TitleCard title="Upcoming" href={`/category/upcoming`} />
       </div>
-      {movies.slice(0, 10).map((item) => {
+      {movies?.slice(0, 10).map((item) => {
         return (
           <MovieCard
             key={item.id}
             image={"https://image.tmdb.org/t/p/w500/" + item.poster_path}
             rate={item.vote_average}
             title={item.title}
+            id={item.id}
           />
         );
       })}

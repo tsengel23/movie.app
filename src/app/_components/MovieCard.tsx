@@ -1,6 +1,5 @@
 "use client";
 
-import { Star } from "lucide-react";
 import { RateCard } from "./RateCard";
 import Link from "next/link";
 

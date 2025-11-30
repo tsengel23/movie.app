@@ -1,17 +1,13 @@
 "use client";
 
-import { Carusel } from "@/app/_components/Carusel";
-import { Footer } from "@/app/_components/Footer";
-import { MovieCard } from "@/app/_components/MovieCard";
-import { MovieSection } from "@/app/_components/MovieSection";
-import { MovieSections } from "@/app/_components/MovieSections";
 import { NavigationCard } from "@/app/_components/NavigationCard";
-import { PreviousNext } from "@/app/_components/PreviousNext";
 import { TitleCard } from "@/app/_components/TitleCard";
-
+import { MovieCard } from "@/app/_components/MovieCard";
+import { PreviousNext } from "@/app/_components/PreviousNext";
+import { Footer } from "@/app/_components/Footer";
 import { useParams } from "next/navigation";
-import { use } from "react";
 import { useEffect, useState } from "react";
+
 //
 export type Movie = {
   adult: boolean;
@@ -45,6 +41,7 @@ const label: Record<string, string> = {
   top_rated: "Top Rated",
   upcoming: "Upcoming",
   popular: "Popular",
+  // more_like_this: "More like This",
 };
 
 export default function CategoryPage() {
@@ -92,6 +89,7 @@ export default function CategoryPage() {
               image={"https://image.tmdb.org/t/p/w500/" + item.poster_path}
               rate={item.vote_average}
               title={item.title}
+              id={item.id}
             />
           );
         })}

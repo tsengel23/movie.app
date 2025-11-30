@@ -124,7 +124,7 @@ export const MovieSection = (props: MovieSectionProps) => {
       <div className="col-span-5">
         <TitleCard title={title} href={`/category/${categoryName}`} />
       </div>
-      {movies.slice(0, 10).map((item) => {
+      {movies?.slice(0, 10).map((item) => {
         return (
           <MovieCard
             key={item.id}

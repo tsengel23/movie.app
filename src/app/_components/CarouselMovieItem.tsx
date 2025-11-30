@@ -1,11 +1,8 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { CarouselItem } from "@/components/ui/carousel";
 import { Play, Star } from "lucide-react";
 import { useEffect, useState } from "react";
-// import { Dots } from "../_components/Dots";
-import React from "react";
 import ReactPlayer from "react-player";
 import {
   Dialog,
@@ -46,23 +43,27 @@ export const CarouselMovieItem = (props: CarouselMovieProps) => {
   const [trailers, setTrailers] = useState<Trailer[]>([]);
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch(
-        `https://api.themoviedb.org/3/movie/${props.movieId}/videos?language=en-US`,
-        {
-          method: "GET",
-          headers: {
-            accept: "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzY2ExNmNlNjA1MzAzNTk5MjIwNGYxMzI1ZDAwZGIwNiIsIm5iZiI6MTc2MzUyMTk5NS41MTcsInN1YiI6IjY5MWQzNWNiMTg0ZThlNTY0ZjJkNDE4MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jl3UrTVIxBBbn3K1fvJ14YrplMU9UtuwKtkSW3lVa78",
-          },
-          next: { revalidate: 3600 },
-        }
-      );
+      try {
+        const res = await fetch(
+          `https://api.themoviedb.org/3/movie/${props.movieId}/videos?language=en-US`,
+          {
+            method: "GET",
+            headers: {
+              accept: "application/json",
+              Authorization:
+                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzY2ExNmNlNjA1MzAzNTk5MjIwNGYxMzI1ZDAwZGIwNiIsIm5iZiI6MTc2MzUyMTk5NS41MTcsInN1YiI6IjY5MWQzNWNiMTg0ZThlNTY0ZjJkNDE4MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jl3UrTVIxBBbn3K1fvJ14YrplMU9UtuwKtkSW3lVa78",
+            },
+            next: { revalidate: 3600 },
+          }
+        );
 
-      const data = (await res.json()) as Response;
-      console.log(data.results);
+        const data = (await res.json()) as Response;
+        console.log(data.results);
 
-      setTrailers(data.results);
+        setTrailers(data.results);
+      } catch (error) {
+        console.log("error");
+      }
     };
 
     getData();
