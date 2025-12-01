@@ -44,8 +44,8 @@ export const MoreLikeSection = (props: MoreLikeSectionProps) => {
   useEffect(() => {
     const getData = async () => {
       const res = await fetch(
-        // `https://api.themoviedb.org/3/movie/${movieId}/similar?language=en-US&page=1`,
-        "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
+        `https://api.themoviedb.org/3/movie/${movieId}/similar?language=en-US&page=1`,
+        // "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
         {
           method: "GET",
           headers: {
@@ -64,7 +64,7 @@ export const MoreLikeSection = (props: MoreLikeSectionProps) => {
   return (
     <div className=" w-fit h-fit grid grid-cols-5 border border-red-500 gap-8 mt-[52px]">
       <div className="col-span-5">
-        <TitleCard title="More like this" href={`/category/More Like This`} />
+        <TitleCard title="More like this" href={`/more-like/${movieId}`} />
       </div>
       {movies?.slice(0, 5).map((item) => {
         return (

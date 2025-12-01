@@ -12,7 +12,7 @@ type MovieCardProps = {
 
 export const MovieCard = (props: MovieCardProps) => {
   return (
-    <Link href={`/movie/${props.id}`}>
+    <Link href={`/movie/${props?.id}`}>
       <div className=" w-fit h-fit flex flex-col gap-0.5 rounded-lg bg-muted border overflow-hidden">
         <div className="w-fit h-fit">
           <div className="w-[230px] h-[340px] hover:opacity-75 transition-opacity duration-300 ease-in-out relative">
@@ -29,7 +29,7 @@ export const MovieCard = (props: MovieCardProps) => {
           {props.rate} 
         </div> */}
           <div>
-            <h1 className="text-lg font-normal">{props.title}</h1>{" "}
+            <h1 className="text-lg font-normal">{props.title}</h1>
             {/* TITLE: */}
           </div>
         </div>

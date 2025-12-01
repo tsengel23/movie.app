@@ -12,6 +12,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { RateCard } from "./RateCard";
 
 type CarouselMovieProps = {
   image?: string;
@@ -40,7 +41,7 @@ type Response = {
   results: Trailer[];
 };
 export const CarouselMovieItem = (props: CarouselMovieProps) => {
-  const [trailers, setTrailers] = useState<Trailer[]>([]);
+  const [trailer, setTrailer] = useState<string>("");
   useEffect(() => {
     const getData = async () => {
       try {
@@ -59,8 +60,14 @@ export const CarouselMovieItem = (props: CarouselMovieProps) => {
 
         const data = (await res.json()) as Response;
         console.log(data.results);
+        const offTrailer = data.results?.find(
+          (el) => el.type === "Trailer"
+        )?.key;
 
-        setTrailers(data.results);
+        const key = offTrailer || data.results[0]?.key || "";
+
+        setTrailer(key);
+        // setTrailers(data.results);
       } catch (error) {
         console.log("error");
       }
@@ -83,10 +90,14 @@ export const CarouselMovieItem = (props: CarouselMovieProps) => {
               <h1 className="text-white text-4xl font-extrabold">
                 {props.title}
               </h1>
-              <div className="flex gap-2 text-white">
+              <RateCard
+                className="text-white"
+                rate={Number(props.rate.toFixed(1))}
+              />
+              {/* <div className="flex gap-2 text-white">
                 <Star fill="#FDE047" className="border text-[#FDE047]" />
                 {props.rate}
-              </div>
+              </div> */}
             </div>
             <p className="w-[302px]  text-[#FAFAFA] text-xs font-normal">
               {props.description}
@@ -103,7 +114,8 @@ export const CarouselMovieItem = (props: CarouselMovieProps) => {
       <DialogContent className="p-0 overflow-hidden min-w-2xl h-[400px]">
         <DialogTitle></DialogTitle>
         <ReactPlayer
-          src={`https://www.youtube.com/watch?v=${trailers[0]?.key}`}
+          src={`https://www.youtube.com/watch?v=${trailer}`}
+          // src={`https://www.youtube.com/watch?v=${trailers[0]?.key}`}
           style={{ width: "100%", height: "400px" }}
         />
       </DialogContent>
