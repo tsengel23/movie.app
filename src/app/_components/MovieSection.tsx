@@ -1,4 +1,5 @@
 "use client";
+import { Skeleton } from "@/components/ui/skeleton";
 import { MovieCard } from "./MovieCard";
 import { TitleCard } from "./TitleCard";
 import { useEffect, useState } from "react";
@@ -119,6 +120,13 @@ export const MovieSection = (props: MovieSectionProps) => {
     };
     getData();
   });
+
+  // if(!loading) {
+  //   return (
+
+  //   )
+  // }
+
   return (
     <div className=" w-fit h-fit grid grid-cols-5 border border-red-500 gap-8 mt-[52px]">
       <div className="col-span-5">

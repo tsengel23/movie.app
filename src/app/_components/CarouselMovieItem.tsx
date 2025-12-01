@@ -1,5 +1,5 @@
 "use client";
-
+import { Skeleton } from "@/components/ui/skeleton";
 import { CarouselItem } from "@/components/ui/carousel";
 import { Play, Star } from "lucide-react";
 import { useEffect, useState } from "react";

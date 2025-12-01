@@ -5,7 +5,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-
+import { Spinner } from "@/components/ui/spinner";
 import { ChangeEvent, useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Search } from "lucide-react";
@@ -85,7 +85,7 @@ export const MovieSearch = () => {
         />
       </PopoverTrigger>
       <PopoverContent
-        className="w-120 p-3 flex flex-col items-center"
+        className="w-[577px] p-3 flex flex-col items-center"
         autoFocus={false}
       >
         <Input
@@ -94,13 +94,17 @@ export const MovieSearch = () => {
           className="w-100! absolute -top-10"
           placeholder="Search..."
         />
-        <div className="w-full max-h-150 rounded-md overflow-scroll">
-          {loading && <p className="p-4 text-center">Loading...</p>}
+        <div className="w-full max-h-150 rounded-md overflow-x-hiddens">
+          {/* {loading && <p className="p-4 text-center">Loading...</p>} */}
+          {loading && (
+            <p className="p-4 text-center flex justify-center">
+              <Spinner className="size-8 text-[#E4E4E7]" />
+            </p>
+          )}
 
           {!loading && movies.length === 0 && (
             <p className="p-4 text-center">No results found.</p>
           )}
-
           {!loading &&
             movies.map((movie) => (
               <MovieSearchCard

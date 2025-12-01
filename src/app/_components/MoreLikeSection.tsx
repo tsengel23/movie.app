@@ -1,5 +1,5 @@
 "use client";
-
+import { Skeleton } from "@/components/ui/skeleton";
 import { useEffect, useState } from "react";
 import { TitleCard } from "./TitleCard";
 import { MovieCard } from "./MovieCard";
