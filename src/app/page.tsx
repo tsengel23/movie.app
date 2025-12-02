@@ -9,6 +9,7 @@ import { Footer } from "./_components/Footer";
 import { MovieDetails } from "./_components/MovieDetails";
 import { MovieSearch } from "./_components/MovieSearch";
 import { VideoDetail } from "./movie/[movieId]/_components/VideoDetail";
+import { PaginationMovie } from "./_components/PaginationMovie";
 
 /*********************************************************************/
 

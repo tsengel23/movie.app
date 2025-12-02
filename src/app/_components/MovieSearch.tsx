@@ -94,7 +94,7 @@ export const MovieSearch = () => {
           className="w-100! absolute -top-10"
           placeholder="Search..."
         />
-        <div className="w-full max-h-150 rounded-md overflow-x-hiddens">
+        <div className="w-full max-h-150 rounded-md overflow-x-hidden">
           {/* {loading && <p className="p-4 text-center">Loading...</p>} */}
           {loading && (
             <p className="p-4 text-center flex justify-center">
