@@ -119,7 +119,7 @@ type videoRes = {
 };
 /************/
 
-export const MovieDetail = () => {
+export const MovieDetails = () => {
   const [trailers, setTrailers] = useState<vidObj[]>([]);
   const [genre, setGenre] = useState<genre[]>([]);
   const [image, setImage] = useState<poster_path>("string");

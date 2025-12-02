@@ -15,6 +15,7 @@ import { Badge } from "@/components/ui/badge";
 import { useParams } from "next/navigation";
 import { MovieDetails } from "./_components";
 import { Cast } from "./_components/Cast";
+import { VideoDetail } from "./_components/VideoDetail";
 /*******************/
 type genre = {
   id: number;
@@ -146,6 +147,7 @@ export default function MovieDetailPage() {
       );
 
       const data = await res.json();
+      console.log(data);
 
       setMovie(data);
       // setTrailers(data.results);
@@ -156,8 +158,13 @@ export default function MovieDetailPage() {
 
   return (
     <div>
-      {movie && <MovieDetails movie={movie} />}
-      <Cast movieId={Number(movieId)} />
+      {/* {movie && <MovieDetails movie={movie} />} */}
+      <VideoDetail
+        movieId={movieId}
+        image={"https://image.tmdb.org/t/p/w500/" + movie?.poster_path}
+      />
+      <div>{movieId}</div>
+      {/* <Cast movieId={Number(movieId)} /> */}
       {/* <MoreLikeThis /> */}
     </div>
   );
