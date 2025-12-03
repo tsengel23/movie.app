@@ -16,7 +16,7 @@ type PreviousNextProps = {
 
 export function PreviousNext({ previousUrl, nextUrl }: PreviousNextProps) {
   return (
-    <Pagination className="w-fit border m-0">
+    <Pagination className="w-fit border border-red-500 m-0">
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious href="#" />

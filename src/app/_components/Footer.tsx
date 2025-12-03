@@ -7,7 +7,7 @@ type FooterProps = {};
 export const Footer = (props: FooterProps) => {
   return (
     <div className="bg-indigo-700 flex justify-center items-center px-20 py-10 w-full h-fit mt-[51px]">
-      <div className="flex gap-30 ">
+      <div className="flex  w-full">
         <div className="w-[247px] h-50 ">
           <Link href="./" className="">
             <h1 className="flex gap-2 text-[#FAFAFA] italic font-semibold text-base">
@@ -18,8 +18,8 @@ export const Footer = (props: FooterProps) => {
             © 2024 Movie Z. All Rights Reserved.
           </p>
         </div>
-        <div className="w-[913px] h-50  flex ">
-          <div className=" w-fit ml-[369px]">
+        <div className="w-full h-50  flex justify-end">
+          <div className=" w-fit ">
             <p className="mb-3 text-[#FAFAFA] text-sm font-normal leading-5 regular">
               Contact Information
             </p>

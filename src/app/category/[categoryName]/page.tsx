@@ -90,7 +90,7 @@ export default function CategoryPage() {
 
       {/*  */}
 
-      <div className=" w-fit h-fit grid grid-cols-5 border border-red-500 gap-8 mb-[52px]">
+      <div className=" w-fit h-fit grid grid-cols-5 border border-red-500 gap-8 mb-[52px] mx-20">
         <div className="col-span-5">
           <TitleCard title={label[categoryName]} />
         </div>
@@ -106,12 +106,13 @@ export default function CategoryPage() {
           );
         })}
       </div>
-      <div className="w-7xl flex justify-end border">
+      <div className="w-full flex justify-end px-20">
         <PaginationMovie
           currentPage={currentPage}
           totalPage={totalPage}
           nextPage={nextPage}
           prevPage={prevPage}
+          className=" "
         />
       </div>
 

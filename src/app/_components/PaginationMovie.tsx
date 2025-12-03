@@ -16,6 +16,7 @@ type PaginationMovieProps = {
   totalPage: number;
   nextPage: () => void;
   prevPage: () => void;
+  className: string;
 };
 
 export const PaginationMovie = ({

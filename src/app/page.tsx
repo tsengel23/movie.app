@@ -11,11 +11,13 @@ import { MovieSearch } from "./_components/MovieSearch";
 import { VideoDetail } from "./movie/[movieId]/_components/VideoDetail";
 import { PaginationMovie } from "./_components/PaginationMovie";
 import { MovieCardSkeleton } from "./_components/MovieCardSkeleton";
+import { CarouselMovieItemSkeleton } from "./_components/CarouselMovieItemSkeleton";
 
 /*********************************************************************/
 
 export default function MovieApp() {
   return (
+    // <CarouselMovieItemSkeleton />
     // <MovieCardSkeleton />
     <div className="w-screen flex flex-col items-center border border-red-600">
       <NavigationCard />

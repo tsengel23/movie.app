@@ -11,6 +11,7 @@ import {
 import { useRef } from "react";
 import { CarouselMovieItem } from "./CarouselMovieItem";
 import { useEffect, useState } from "react";
+import { CarouselMovieItemSkeleton } from "./CarouselMovieItemSkeleton";
 
 export type Movie = {
   adult: boolean;
@@ -70,8 +71,8 @@ type Response = {
 type CaruselProps = {};
 export function Carusel(props: CaruselProps) {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
-
   const [movies, setMovies] = useState<Movie[]>([]);
+  const [loading, setLoading] = useState(true);
 
   //
   // const [api, setApi] = useState<any>(null);
@@ -81,6 +82,7 @@ export function Carusel(props: CaruselProps) {
 
   useEffect(() => {
     const getData = async () => {
+      setLoading(true);
       try {
         const res = await fetch(
           "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
@@ -100,6 +102,7 @@ export function Carusel(props: CaruselProps) {
       } catch (error) {
         console.log("error");
       }
+      setLoading(false);
     };
     getData();
   });
@@ -118,31 +121,37 @@ export function Carusel(props: CaruselProps) {
 
   return (
     <div className="relative w-full h-fit">
-      <Carousel
-        plugins={[plugin.current]}
-        className="w-full h-fit "
-        onMouseEnter={plugin.current.stop}
-        onMouseLeave={plugin.current.reset}
-        //
-        // setApi={setApi}
-        //
-      >
-        <CarouselContent className="relative m-0 ">
-          {movies.slice(0, 5).map((item, index) => (
-            <CarouselMovieItem
-              key={index}
-              image={"https://image.tmdb.org/t/p/original/" + item.poster_path}
-              when={item.release_date}
-              title={item.title}
-              rate={item.vote_average}
-              description={item.overview}
-              movieId={item.id}
-            />
-          ))}
-        </CarouselContent>
-        <CarouselPrevious className="absolute top-[50%] left-[44px]" />
-        <CarouselNext className="absolute top-[50%] right-[44px]" />
-      </Carousel>
+      {loading && <CarouselMovieItemSkeleton />}
+
+      {!loading && (
+        <Carousel
+          plugins={[plugin.current]}
+          className="w-full h-fit "
+          onMouseEnter={plugin.current.stop}
+          onMouseLeave={plugin.current.reset}
+          //
+          // setApi={setApi}
+          //
+        >
+          <CarouselContent className="relative m-0 ">
+            {movies.slice(0, 5).map((item, index) => (
+              <CarouselMovieItem
+                key={index}
+                image={
+                  "https://image.tmdb.org/t/p/original/" + item.poster_path
+                }
+                when={item.release_date}
+                title={item.title}
+                rate={item.vote_average}
+                description={item.overview}
+                movieId={item.id}
+              />
+            ))}
+          </CarouselContent>
+          <CarouselPrevious className="absolute top-[50%] left-[44px]" />
+          <CarouselNext className="absolute top-[50%] right-[44px]" />
+        </Carousel>
+      )}
       {/*  */}
       {/* <div className="flex gap-2 justify-center mt-4">
         {Array.from({ length: count }).map((_, index) => (

@@ -3,10 +3,11 @@
 import { NavigationCard } from "@/app/_components/NavigationCard";
 import { TitleCard } from "@/app/_components/TitleCard";
 import { MovieCard } from "@/app/_components/MovieCard";
-import { PreviousNext } from "@/app/_components/PreviousNext";
+
 import { Footer } from "@/app/_components/Footer";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { PaginationMovie } from "@/app/_components/PaginationMovie";
 
 //
 export type Movie = {
@@ -46,13 +47,15 @@ type Params = {
 
 export default function CategoryPage() {
   const { movieId } = useParams<Params>();
-
   const [movies, setMovies] = useState<Movie[]>([]);
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(1);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const getData = async () => {
+      setLoading(true);
       const res = await fetch(
-        `https://api.themoviedb.org/3/movie/${movieId}/similar?language=en-US&page=1`,
+        `https://api.themoviedb.org/3/movie/${movieId}/similar?language=en-US&page=${currentPage}`,
         {
           method: "GET",
           headers: {
@@ -67,10 +70,19 @@ export default function CategoryPage() {
       const data = (await res.json()) as Response;
 
       setMovies(data.results);
+      setTotalPage(data.total_pages);
+      setLoading(false);
     };
 
     getData();
-  });
+  }, [movieId, currentPage]);
+
+  const nextPage = () => {
+    setCurrentPage((prev) => prev + 1);
+  };
+  const prevPage = () => {
+    setCurrentPage((prev) => prev - 1);
+  };
 
   return (
     <div className="w-screen flex flex-col items-center border border-red-600 relative">
@@ -95,7 +107,13 @@ export default function CategoryPage() {
         })}
       </div>
       <div className="w-7xl flex justify-end border">
-        <PreviousNext />
+        <PaginationMovie
+          currentPage={currentPage}
+          totalPage={totalPage}
+          nextPage={nextPage}
+          prevPage={prevPage}
+          className=" "
+        />
       </div>
 
       {/*  */}
