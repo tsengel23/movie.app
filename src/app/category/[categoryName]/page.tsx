@@ -47,13 +47,16 @@ const label: Record<string, string> = {
 
 export default function CategoryPage() {
   const { categoryName } = useParams<Params>();
-
   const [movies, setMovies] = useState<Movie[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPage, setTotalPage] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const getData = async () => {
+      setLoading(true);
       const res = await fetch(
-        `https://api.themoviedb.org/3/movie/${categoryName}?language=en-US&page=1`,
+        `https://api.themoviedb.org/3/movie/${categoryName}?language=en-US&page=${currentPage}`,
         {
           method: "GET",
           headers: {
@@ -68,10 +71,18 @@ export default function CategoryPage() {
       const data = (await res.json()) as Response;
 
       setMovies(data.results);
+      setTotalPage(data.total_pages);
+      setLoading(false);
     };
 
     getData();
-  });
+  }, [categoryName, currentPage]);
+  const nextPage = () => {
+    setCurrentPage((prev) => prev + 1);
+  };
+  const prevPage = () => {
+    setCurrentPage((prev) => prev - 1);
+  };
 
   return (
     <div className="w-screen flex flex-col items-center border border-red-600 relative">
@@ -96,7 +107,12 @@ export default function CategoryPage() {
         })}
       </div>
       <div className="w-7xl flex justify-end border">
-        <PaginationMovie />
+        <PaginationMovie
+          currentPage={currentPage}
+          totalPage={totalPage}
+          nextPage={nextPage}
+          prevPage={prevPage}
+        />
       </div>
 
       {/*  */}

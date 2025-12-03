@@ -29,13 +29,43 @@ export const PaginationMovie = ({
       <Pagination className="w-fit m-0">
         <PaginationContent>
           <PaginationItem>
-            <Button onClick={prevPage} disabled={currentPage === 1}>
+            <Button
+              onClick={prevPage}
+              disabled={currentPage === 1}
+              variant="outline"
+            >
               <ChevronLeft /> Previous
             </Button>
           </PaginationItem>
+          {currentPage > 1 && (
+            <PaginationItem>
+              <Button onClick={prevPage} variant="outline">
+                {currentPage - 1}
+              </Button>
+            </PaginationItem>
+          )}
           <PaginationItem>
-            <Button onClick={nextPage} disabled={currentPage === totalPage}>
-              <ChevronRight /> Next
+            <Button variant="default" className="bg-gray-400">
+              {currentPage}
+            </Button>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationEllipsis />
+          </PaginationItem>
+          {currentPage < totalPage && (
+            <PaginationItem>
+              <Button onClick={prevPage} variant="outline">
+                {currentPage + 1}
+              </Button>
+            </PaginationItem>
+          )}
+          <PaginationItem>
+            <Button
+              onClick={nextPage}
+              disabled={currentPage === totalPage}
+              variant="outline"
+            >
+              Next <ChevronRight />
             </Button>
           </PaginationItem>
         </PaginationContent>
