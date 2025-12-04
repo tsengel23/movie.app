@@ -3,6 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { MovieCard } from "./MovieCard";
 import { TitleCard } from "./TitleCard";
 import { useEffect, useState } from "react";
+import { MovieCardSkeleton } from "./MovieCardSkeleton";
 
 export type Movie = {
   adult: boolean;
@@ -27,68 +28,6 @@ type Response = {
   total_pages: number;
   total_results: number;
 };
-// const popular = [
-//   {
-//     image:
-//       "https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg",
-//     rate: 6.9,
-//     title: "The Shawshank Redemption",
-//   },
-//   {
-//     image:
-//       "https://m.media-amazon.com/images/M/MV5BNGEwYjgwOGQtYjg5ZS00Njc1LTk2ZGEtM2QwZWQ2NjdhZTE5XkEyXkFqcGc@._V1_.jpg",
-//     rate: 6.9,
-//     title: "The Godfather",
-//   },
-//   {
-//     image:
-//       "https://m.media-amazon.com/images/M/MV5BMDQ5MWU2YWUtNTQ4OC00Njk5LWI0NzctMjM4OGZiNmZmNGViXkEyXkFqcGc@._V1_.jpg",
-//     rate: 6.9,
-//     title: "The Dark Knight",
-//   },
-//   {
-//     image:
-//       "https://upload.wikimedia.org/wikipedia/commons/b/b5/12_Angry_Men_%281957_film_poster%29.jpg",
-//     rate: 6.9,
-//     title: "12 Angry Men",
-//   },
-//   {
-//     image:
-//       "https://upload.wikimedia.org/wikipedia/en/4/48/Lord_Rings_Return_King.jpg",
-//     rate: 6.9,
-//     title: "The Lord of the Rings: The Return of the King",
-//   },
-//   {
-//     image:
-//       "https://m.media-amazon.com/images/M/MV5BYzdjMDAxZGItMjI2My00ODA1LTlkNzItOWFjMDU5ZDJlYWY3XkEyXkFqcGc@._V1_FMjpg_U00_.jpg",
-//     rate: 6.9,
-//     title: "Interstellar",
-//   },
-//   {
-//     image:
-//       "https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/se7en_2.png",
-//     rate: 6.9,
-//     title: "Seven",
-//   },
-//   {
-//     image:
-//       "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/It%27s_a_Wonderful_Life_%281946_poster%29.jpeg/960px-It%27s_a_Wonderful_Life_%281946_poster%29.jpeg",
-//     rate: 6.9,
-//     title: "It's a Wonderful Life",
-//   },
-//   {
-//     image:
-//       "https://m.media-amazon.com/images/M/MV5BYzc0ODMyMzctZTA5Zi00MGZhLWE0NTItZjJhOTE3OWMxZjBlXkEyXkFqcGc@._V1_.jpg",
-//     rate: 6.9,
-//     title: "Seven Samurai",
-//   },
-//   {
-//     image:
-//       "https://m.media-amazon.com/images/M/MV5BNDdhOGJhYzctYzYwZC00YmI2LWI0MjctYjg4ODdlMDExYjBlXkEyXkFqcGc@._V1_FMjpg_U00_.jpg",
-//     rate: 6.9,
-//     title: "The Silence of the Lambs",
-//   },
-// ];
 
 type MovieSectionProps = {
   categoryName: string;
@@ -97,10 +36,11 @@ type MovieSectionProps = {
 
 export const MovieSection = (props: MovieSectionProps) => {
   const { categoryName, title } = props;
-
   const [movies, setMovies] = useState<Movie[]>([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const getData = async () => {
+      setLoading(true);
       const res = await fetch(
         `https://api.themoviedb.org/3/movie/${categoryName}?language=en-US&page=1`,
         {
@@ -117,15 +57,38 @@ export const MovieSection = (props: MovieSectionProps) => {
       const data = (await res.json()) as Response;
 
       setMovies(data.results);
+      setLoading(false);
     };
     getData();
-  });
+  }, [categoryName]);
 
-  // if(!loading) {
-  //   return (
+  if (loading) {
+    return (
+      // <div className=" ">
+      //   <div className="flex justify-between mt-[52px] mx-20">
+      //     <Skeleton className="w-[250px] h-8 border-2 border-red-500 rounded-full" />
+      //     <Skeleton className="w-[165px] h-8 border-2 border-red-500 rounded-full" />
+      //   </div>
+      //   <div className="w-screen grid grid-cols-5 border gap-8 mt-[52px] mx-20 ">
+      //     {new Array(10).fill(0).map((_, index) => (
+      //       <MovieCardSkeleton key={index} />
+      //     ))}
+      //   </div>
+      // </div>
+      <div className=" w-screen px-20 h-fit grid grid-cols-5 gap-8 mt-[52px]">
+        <div className="col-span-5">
+          <div className="flex justify-between">
+            <Skeleton className="w-[250px] h-8  rounded-full" />
+            <Skeleton className="w-[165px] h-8  rounded-full" />
+          </div>
+        </div>
 
-  //   )
-  // }
+        {new Array(10).fill(0).map((_, index) => (
+          <MovieCardSkeleton key={index} />
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div className=" w-fit h-fit grid grid-cols-5 border border-red-500 gap-8 mt-[52px] mx-20">

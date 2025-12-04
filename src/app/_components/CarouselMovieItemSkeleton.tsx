@@ -2,11 +2,7 @@
 import { Skeleton } from "@/components/ui/skeleton";
 
 export const CarouselMovieItemSkeleton = () => {
-  return (
-    <Skeleton>
-      <div className=" mt-6 w-full aspect-5/2 border "></div>
-    </Skeleton>
-  );
+  return <Skeleton className=" w-full aspect-5/2 border " />;
 };
 
 // <div className="mt-[83px]">

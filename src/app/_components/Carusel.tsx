@@ -105,7 +105,7 @@ export function Carusel(props: CaruselProps) {
       setLoading(false);
     };
     getData();
-  });
+  }, []);
 
   //
   // useEffect(() => {
@@ -138,7 +138,7 @@ export function Carusel(props: CaruselProps) {
               <CarouselMovieItem
                 key={index}
                 image={
-                  "https://image.tmdb.org/t/p/original/" + item.poster_path
+                  "https://image.tmdb.org/t/p/original/" + item.backdrop_path
                 }
                 when={item.release_date}
                 title={item.title}

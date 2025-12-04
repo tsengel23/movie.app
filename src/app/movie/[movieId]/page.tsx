@@ -16,6 +16,7 @@ import { useParams } from "next/navigation";
 import { MovieDetails } from "./_components";
 import { Cast } from "./_components/Cast";
 import { VideoDetail } from "./_components/VideoDetail";
+import { CastCrewDetail } from "./_components/CastCrewDetail";
 /*******************/
 type genre = {
   id: number;
@@ -161,11 +162,12 @@ export default function MovieDetailPage() {
       {/* {movie && <MovieDetails movie={movie} />} */}
       <VideoDetail
         movieId={movieId}
-        image={"https://image.tmdb.org/t/p/w500/" + movie?.poster_path}
+        image={"https://image.tmdb.org/t/p/w500/" + movie?.backdrop_path}
       />
       <div>{movieId}</div>
       {/* <Cast movieId={Number(movieId)} /> */}
       {/* <MoreLikeThis /> */}
+      <CastCrewDetail />
     </div>
   );
 }
