@@ -114,9 +114,14 @@ export const CarouselMovieItem = (props: CarouselMovieProps) => {
       <DialogContent className="p-0 overflow-hidden min-w-2xl h-[400px]">
         <DialogTitle></DialogTitle>
         <ReactPlayer
+          className="w-[1200px] h-[800px]"
           src={`https://www.youtube.com/watch?v=${trailer}`}
           // src={`https://www.youtube.com/watch?v=${trailers[0]?.key}`}
-          style={{ width: "100%", height: "400px" }}
+          style={{
+            width: "100%",
+            height: "400px",
+          }}
+          controls={true}
         />
       </DialogContent>
     </Dialog>

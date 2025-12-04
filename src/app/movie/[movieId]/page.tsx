@@ -16,7 +16,7 @@ import { useParams } from "next/navigation";
 import { MovieDetails } from "./_components";
 import { Cast } from "./_components/Cast";
 import { VideoDetail } from "./_components/VideoDetail";
-import { CastCrewDetail } from "./_components/CastCrewDetail";
+import { CastCrew } from "./_components/CastCrew";
 /*******************/
 type genre = {
   id: number;
@@ -167,7 +167,7 @@ export default function MovieDetailPage() {
       <div>{movieId}</div>
       {/* <Cast movieId={Number(movieId)} /> */}
       {/* <MoreLikeThis /> */}
-      <CastCrewDetail />
+      <CastCrew movieId={movieId} />
     </div>
   );
 }

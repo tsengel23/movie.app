@@ -1,14 +1,14 @@
 "use client";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-
-import { Play } from "lucide-react";
+import { Play, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 
@@ -30,40 +30,29 @@ type Response = {
   results: trailer[];
 };
 
-// type Params = {
-//   movieId: string;   ene ymr heregtei bilee?
-// };
-type VideoDetailProps = {
+type MovieTrailerProps = {
   movieId: string;
-  image: string;
+  movie: string;
 };
-
-export const VideoDetail = (props: VideoDetailProps) => {
-  // const [trailer, setTrailer] = useState<trailer[]>([]);
-  const [trailer, setTrailer] = useState<string>("");
-
+export const MovieTrailer = ({ movieId, movie }: MovieTrailerProps) => {
+  const videoUrl = `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`;
+  const [video, setVideo] = useState<string>("");
   useEffect(() => {
     const getData = async () => {
-      const res = await fetch(
-        `https://api.themoviedb.org/3/movie/${props.movieId}/videos?language=en-US`,
-        {
-          method: "GET",
-          headers: {
-            accept: "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzY2ExNmNlNjA1MzAzNTk5MjIwNGYxMzI1ZDAwZGIwNiIsIm5iZiI6MTc2MzUyMTk5NS41MTcsInN1YiI6IjY5MWQzNWNiMTg0ZThlNTY0ZjJkNDE4MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jl3UrTVIxBBbn3K1fvJ14YrplMU9UtuwKtkSW3lVa78",
-          },
-          next: { revalidate: 3600 },
-        }
-      );
+      const res = await fetch(videoUrl, {
+        method: "GET",
+        headers: {
+          accept: "application.json",
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzY2ExNmNlNjA1MzAzNTk5MjIwNGYxMzI1ZDAwZGIwNiIsIm5iZiI6MTc2MzUyMTk5NS41MTcsInN1YiI6IjY5MWQzNWNiMTg0ZThlNTY0ZjJkNDE4MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jl3UrTVIxBBbn3K1fvJ14YrplMU9UtuwKtkSW3lVa78",
+        },
+        next: { revalidate: 3600 },
+      });
       const data = (await res.json()) as Response;
-
-      console.log(data);
-      // setTrailer(data.results);
-      setTrailer(data?.results[0]?.key);
+      setVideo(data?.results[0].key);
     };
     getData();
-  }, [props.movieId]);
+  }, []);
   return (
     <div className="relative w-full">
       <img
@@ -83,17 +72,21 @@ export const VideoDetail = (props: VideoDetailProps) => {
             </p>
           </div>
           <DialogContent className="p-0 overflow-hidden min-w-2xl h-[400px]">
-            <DialogTitle></DialogTitle>
+            <DialogTitle className="hidden">Trailer</DialogTitle>
             <ReactPlayer
               className="w-[1200px] h-[800px]"
-              src={`https://www.youtube.com/watch?v=${trailer}`}
-              // src={`https://www.youtube.com/watch?v=${trailers[0]?.key}`}
+              src={`https://www.youtube.com/watch?v=${video}`}
               style={{
-                width: "100%",
-                height: "400px",
+                width: "250",
+                height: "100%",
               }}
               controls={true}
             />
+            <DialogClose asChild>
+              <button className="absolute -top-2 text-white -right-2 rounded px-2 py-1">
+                <X className="w-4 h-4" />
+              </button>
+            </DialogClose>
           </DialogContent>
         </div>
       </Dialog>
