@@ -127,13 +127,12 @@ export const MovieDetails = () => {
   useEffect(() => {
     const getData = async () => {
       const res = await fetch(
-        `https://api.themoviedb.org/3/movie/${movie_id}/videos`,
+        `${process.env.TMDB_BASE_URL}/movie/${movie_id}/videos`,
         {
           method: "GET",
           headers: {
             accept: "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzY2ExNmNlNjA1MzAzNTk5MjIwNGYxMzI1ZDAwZGIwNiIsIm5iZiI6MTc2MzUyMTk5NS41MTcsInN1YiI6IjY5MWQzNWNiMTg0ZThlNTY0ZjJkNDE4MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jl3UrTVIxBBbn3K1fvJ14YrplMU9UtuwKtkSW3lVa78",
+            Authorization: `Bearer ${process.env.TMDB_API_TOKEN}`,
           },
           next: { revalidate: 3600 },
         }

@@ -8,34 +8,47 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Play, X } from "lucide-react";
+import { Fullscreen, Play, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
+// import { result } from "@/app/category/[categoryName]/page";
 
-type trailer = {
-  iso_639_1: string;
-  iso_3166_1: string;
-  name: string;
-  key: string;
-  site: string;
-  size: number;
-  type: string;
-  official: boolean;
-  published_at: string;
-  id: string;
-};
-
-type Response = {
-  id: number;
-  results: trailer[];
-};
-
+// type detailRes = {
+//   adult: boolean;
+//   backdrop_path: string;
+//   belongs_to_collection: string;
+//   budget: number;
+//   genres: genre[];
+//   homepage: string;
+//   id: number;
+//   imdb_id: string;
+//   original_language: string;
+//   original_title: string;
+//   overview: string;
+//   popularity: number;
+//   poster_path: string;
+//   production_companies: company[];
+//   production_countries: country[];
+//   release_date: string;
+//   revenue: number;
+//   runtime: number;
+//   spoken_languages: language[];
+//   status: string;
+//   tagline: string;
+//   title: string;
+//   video: boolean;
+//   vote_average: number;
+//   vote_count: number;
+// };
 type MovieTrailerProps = {
+  // movie?: movie;
   movieId: string;
-  movie: string;
+  // image: string;
+  // time: number;
+  movie?: detailRes;
 };
 export const MovieTrailer = ({ movieId, movie }: MovieTrailerProps) => {
-  const videoUrl = `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`;
+  const videoUrl = `${process.env.TMDB_BASE_URL}/movie/${movieId}/videos?language=en-US&page=1`;
   const [video, setVideo] = useState<string>("");
   useEffect(() => {
     const getData = async () => {
@@ -43,38 +56,39 @@ export const MovieTrailer = ({ movieId, movie }: MovieTrailerProps) => {
         method: "GET",
         headers: {
           accept: "application.json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzY2ExNmNlNjA1MzAzNTk5MjIwNGYxMzI1ZDAwZGIwNiIsIm5iZiI6MTc2MzUyMTk5NS41MTcsInN1YiI6IjY5MWQzNWNiMTg0ZThlNTY0ZjJkNDE4MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jl3UrTVIxBBbn3K1fvJ14YrplMU9UtuwKtkSW3lVa78",
+          Authorization: `Bearer ${process.env.TMDB_API_TOKEN}`,
         },
         next: { revalidate: 3600 },
       });
-      const data = (await res.json()) as Response;
-      setVideo(data?.results[0].key);
+      const data = (await res.json()) as videoRes;
+      setVideo(data?.results[0]?.key);
     };
     getData();
   }, []);
   return (
-    <div className="relative w-full">
+    <div className="flex gap-8 w-full max-w-270 h-107 relative">
       <img
-        src={props.image}
-        className="w-[760px] h-[428px] absolute object-cover top-0 left-0 rounded-sm "
+        src={"https://image.tmdb.org/t/p/w500" + movie?.poster_path}
+        className="h-full w-[290px] rounded-sm"
       />
+
       <Dialog>
         <div className="w-[760px] h-[428px] rounded-sm  border border-red-600  bg-cover object-fill relative">
-          <div className="absolute flex gap-3  top-[364px] left-6 items-center border">
+          <div className="absolute flex gap-3  top-[364px] left-6 items-center border-4 border-green-600">
             <DialogTrigger>
               <div className="w-10 h-10  flex justify-center items-center rounded-full bg-white border">
                 <Play className="w-4 h-4" />
               </div>
             </DialogTrigger>
             <p>
-              Play trailer <span>2:45</span> {/* run_time bichne*/}
+              Play trailer <span>{movie?.runtime}</span>
             </p>
           </div>
           <DialogContent className="p-0 overflow-hidden min-w-2xl h-[400px]">
             <DialogTitle className="hidden">Trailer</DialogTitle>
             <ReactPlayer
-              className="w-[1200px] h-[800px]"
+              // className="w-[1200px] h-[800px]"
+
               src={`https://www.youtube.com/watch?v=${video}`}
               style={{
                 width: "250",
@@ -82,11 +96,11 @@ export const MovieTrailer = ({ movieId, movie }: MovieTrailerProps) => {
               }}
               controls={true}
             />
-            <DialogClose asChild>
+            {/* <DialogClose asChild>
               <button className="absolute -top-2 text-white -right-2 rounded px-2 py-1">
                 <X className="w-4 h-4" />
               </button>
-            </DialogClose>
+            </DialogClose> */}
           </DialogContent>
         </div>
       </Dialog>

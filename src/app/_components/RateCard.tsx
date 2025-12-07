@@ -13,7 +13,6 @@ export const RateCard = (props: RateCardProps) => {
       <Star fill="#FDE047" className="text-[#FDE047]" />
       <div className="flex items-center">
         <p className={`text-sm font-medium ${props.className}`}>
-          {" "}
           {props.rate.toFixed(1)}
         </p>
         <span

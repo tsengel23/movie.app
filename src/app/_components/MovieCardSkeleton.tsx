@@ -1,7 +1,6 @@
 "use client";
 
 import { Skeleton } from "@/components/ui/skeleton";
-import { Star } from "lucide-react";
 
 export const MovieCardSkeleton = () => {
   return (

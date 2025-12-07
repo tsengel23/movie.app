@@ -13,7 +13,7 @@ import { CarouselMovieItem } from "./CarouselMovieItem";
 import { useEffect, useState } from "react";
 import { CarouselMovieItemSkeleton } from "./CarouselMovieItemSkeleton";
 
-export type Movie = {
+export type result = {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -32,7 +32,7 @@ export type Movie = {
 
 type Response = {
   page: number;
-  results: Movie[];
+  results: result[];
   total_pages: number;
   total_results: number;
 };
@@ -71,7 +71,7 @@ type Response = {
 type CaruselProps = {};
 export function Carusel(props: CaruselProps) {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<result[]>([]);
   const [loading, setLoading] = useState(true);
 
   //
@@ -85,13 +85,12 @@ export function Carusel(props: CaruselProps) {
       setLoading(true);
       try {
         const res = await fetch(
-          "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
+          `${process.env.TMDB_BASE_URL}/movie/now_playing?language=en-US&page=1`,
           {
             method: "GET",
             headers: {
-              Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzY2ExNmNlNjA1MzAzNTk5MjIwNGYxMzI1ZDAwZGIwNiIsIm5iZiI6MTc2MzUyMTk5NS41MTcsInN1YiI6IjY5MWQzNWNiMTg0ZThlNTY0ZjJkNDE4MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jl3UrTVIxBBbn3K1fvJ14YrplMU9UtuwKtkSW3lVa78",
               accept: "application/json",
+              Authorization: `Bearer ${process.env.TMDB_API_TOKEN}`,
             },
             next: { revalidate: 3600 },
           }

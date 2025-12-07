@@ -11,37 +11,37 @@ import { cn } from "@/lib/utils";
 import { Search } from "lucide-react";
 import { MovieSearchCard } from "./MovieSearchCard";
 /************/
-type genre_id = {
-  id: number;
-};
+// type genre_id = {
+//   id: number;
+// };
 
-type result = {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: genre_id[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-};
+// type result = {
+//   adult: boolean;
+//   backdrop_path: string;
+//   genre_ids: genre_id[];
+//   id: number;
+//   original_language: string;
+//   original_title: string;
+//   overview: string;
+//   popularity: number;
+//   poster_path: string;
+//   release_date: string;
+//   title: string;
+//   video: boolean;
+//   vote_average: number;
+//   vote_count: number;
+// };
 
-type response = {
-  page: number;
-  results: result[];
-  total_pages: number;
-  total_results: number;
-};
+// type response = {
+//   page: number;
+//   results: result[];
+//   total_pages: number;
+//   total_results: number;
+// };
 /**************/
 
 export const MovieSearch = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<result[]>([]);
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -56,13 +56,12 @@ export const MovieSearch = () => {
       setLoading(true);
       const res = await fetch(
         // 'https://api.themoviedb.org/3/search/movie?query=${searchValue}&language=en-US&page=${page}',
-        `https://api.themoviedb.org/3/search/movie?query=${query}&language=en-US&page=1`,
+        `${process.env.TMDB_BASE_URL}/search/movie?query=${query}&language=en-US&page=1`,
         {
           // method: "GET",
           headers: {
             accept: "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzY2ExNmNlNjA1MzAzNTk5MjIwNGYxMzI1ZDAwZGIwNiIsIm5iZiI6MTc2MzUyMTk5NS41MTcsInN1YiI6IjY5MWQzNWNiMTg0ZThlNTY0ZjJkNDE4MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jl3UrTVIxBBbn3K1fvJ14YrplMU9UtuwKtkSW3lVa78",
+            Authorization: `Bearer ${process.env.TMDB_API_TOKEN}`,
           },
         }
       );

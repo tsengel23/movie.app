@@ -23,42 +23,41 @@ type CarouselMovieProps = {
   movieId: number;
 };
 
-type Trailer = {
-  iso_639_1: string;
-  iso_3166_1: string;
-  name: string;
-  key: string;
-  site: string;
-  size: number;
-  type: string;
-  official: boolean;
-  published_at: string;
-  id: string;
-};
+// type result = {
+//   iso_639_1: string;
+//   iso_3166_1: string;
+//   name: string;
+//   key: string;
+//   site: string;
+//   size: number;
+//   type: string;
+//   official: boolean;
+//   published_at: string;
+//   id: string;
+// };
 
-type Response = {
-  id: number;
-  results: Trailer[];
-};
+// type Response = {
+//   id: number;
+//   results: result[];
+// };
 export const CarouselMovieItem = (props: CarouselMovieProps) => {
   const [trailer, setTrailer] = useState<string>("");
   useEffect(() => {
     const getData = async () => {
       try {
         const res = await fetch(
-          `https://api.themoviedb.org/3/movie/${props.movieId}/videos?language=en-US`,
+          `${process.env.TMDB_BASE_URL}/movie/${props.movieId}/videos?language=en-US`,
           {
             method: "GET",
             headers: {
               accept: "application/json",
-              Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzY2ExNmNlNjA1MzAzNTk5MjIwNGYxMzI1ZDAwZGIwNiIsIm5iZiI6MTc2MzUyMTk5NS41MTcsInN1YiI6IjY5MWQzNWNiMTg0ZThlNTY0ZjJkNDE4MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jl3UrTVIxBBbn3K1fvJ14YrplMU9UtuwKtkSW3lVa78",
+              Authorization: `Bearer ${process.env.TMDB_API_TOKEN}`,
             },
             next: { revalidate: 3600 },
           }
         );
 
-        const data = (await res.json()) as Response;
+        const data = (await res.json()) as videoRes;
         console.log(data.results);
         const offTrailer = data.results?.find(
           (el) => el.type === "Trailer"
@@ -79,12 +78,12 @@ export const CarouselMovieItem = (props: CarouselMovieProps) => {
   return (
     <Dialog>
       <CarouselItem className={"pl-0"}>
-        <div className="w-full relative border border-green-600 flex flex-col items-center ">
+        <div className="w-full relative  flex flex-col items-center ">
           <img
             className="w-full aspect-5/2 object-cover z-1"
             src={props.image}
           />
-          <div className="flex flex-col w-[404px] h-fit gap-4 absolute bottom-[158] left-[140px] z-1 border border-red-600">
+          <div className="flex flex-col w-[404px] h-fit gap-4 absolute bottom-[158] left-[140px] z-1 ">
             <div>
               <p className="text-white text-base font-normal">{props.when} :</p>
               <h1 className="text-white text-4xl font-extrabold">

@@ -4,37 +4,54 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ChevronRight } from "lucide-react";
 import { GenreItem } from "./GenreItem";
 import { useState, useEffect } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Badge } from "@/components/ui/badge";
 
-export type Genre = {
-  id: number;
-  name: string;
-};
+// export type genre = {
+//   id: number;
+//   name: string;
+// };
 
-type Response = {
-  genres: Genre[];
-};
+// type genreRes = {
+//   genres: genre[];
+// };
 
 export const GenreMain = () => {
-  const [genres, setGenres] = useState<Genre[]>([]);
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+  const genreIds = searchParams.get("genreIds")?.split(",") || [];
+  console.log(genreIds);
+  const [genres, setGenres] = useState<genre[]>([]);
+
+  const handleClickGenre = (genreId: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    const updatedGenreIds = genreIds?.includes(genreId)
+      ? genreIds.filter((id) => id !== genreId)
+      : [...genreIds, genreId];
+
+    params.set("genreIds", updatedGenreIds.join(","));
+    router.push(pathname + "?" + params);
+  };
   useEffect(() => {
     const getData = async () => {
       try {
         const res = await fetch(
-          "https://api.themoviedb.org/3/genre/movie/list?language=en",
+          `${process.env.TMDB_BASE_URL}/genre/movie/list?language=en`,
           {
             method: "GET",
             headers: {
               accept: "application/json",
-              Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzY2ExNmNlNjA1MzAzNTk5MjIwNGYxMzI1ZDAwZGIwNiIsIm5iZiI6MTc2MzUyMTk5NS41MTcsInN1YiI6IjY5MWQzNWNiMTg0ZThlNTY0ZjJkNDE4MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jl3UrTVIxBBbn3K1fvJ14YrplMU9UtuwKtkSW3lVa78",
+              Authorization: `Bearer ${process.env.TMDB_API_TOKEN}`,
             },
             next: { revalidate: 3600 },
           }
         );
-        const data = (await res.json()) as Response;
+        const data = (await res.json()) as genreRes;
         setGenres(data.genres);
         // ingej bichij bas bolno !!!
         // const data = {genres: []}
@@ -59,7 +76,22 @@ export const GenreMain = () => {
           <hr className="mt-4 mb-4" />
           <div className="w-fit h-50 flex flex-wrap gap-4">
             {genres?.map((item) => {
-              return <GenreItem key={item.id} name={item.name} id={item.id} />;
+              return (
+                <Badge
+                  key={item.id}
+                  className="w-fit h-5 flex items-center gap-2 cursor-pointer hover:bg-black hover:text-white "
+                  variant={
+                    genreIds.includes(item.id.toString())
+                      ? "default"
+                      : "outline"
+                  }
+                  onClick={() => handleClickGenre(item.id.toString())}
+                >
+                  {item.name}
+                  <ChevronRight strokeWidth={1} />
+                </Badge>
+              );
+              // return <GenreItem key={item.id} name={item.name} id={item.id} />;
             })}
           </div>
         </div>

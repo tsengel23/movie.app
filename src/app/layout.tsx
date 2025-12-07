@@ -3,6 +3,8 @@ import "./globals.css";
 import { PropsWithChildren } from "react";
 import { ThemeProvider } from "./_components/theme-provider";
 import "keen-slider/keen-slider.min.css";
+import { NavigationCard } from "./_components/NavigationCard";
+import { Footer } from "./_components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,6 +27,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <NavigationCard />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -33,6 +36,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         >
           {children}
         </ThemeProvider>
+        <Footer />
       </body>
     </html>
   );

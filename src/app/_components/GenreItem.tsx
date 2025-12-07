@@ -7,18 +7,19 @@ import { ChevronRight } from "lucide-react";
 type GenreItemProps = {
   id: number;
   name: string;
+  // handleClickGenre: () => void;
+  // onClick: () => void;
 };
 
 export const GenreItem = (props: GenreItemProps) => {
   return (
-    <div>
-      <Badge
-        className="w-fit h-5 flex items-center gap-2 cursor-pointer"
-        variant={"outline"}
-      >
-        {props.name}
-        <ChevronRight strokeWidth={1} />
-      </Badge>
-    </div>
+    <Badge
+      className="w-fit h-5 flex items-center gap-2 cursor-pointer hover:bg-black hover:text-white "
+      variant={"outline"}
+      onClick={() => handleClickGenre(props.id)}
+    >
+      {props.name}
+      <ChevronRight strokeWidth={1} />
+    </Badge>
   );
 };

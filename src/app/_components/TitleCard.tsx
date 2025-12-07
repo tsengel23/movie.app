@@ -11,7 +11,7 @@ type TitleCardProps = {
 
 export const TitleCard = (props: TitleCardProps) => {
   return (
-    <div className="flex justify-between border ">
+    <div className="flex justify-between  ">
       <h1 className="text-[#09090B] font-semibold text-2xl ">{props.title}</h1>
 
       {props.href && (
@@ -24,10 +24,6 @@ export const TitleCard = (props: TitleCardProps) => {
           </Button>
         </Link>
       )}
-
-      {/* <Button className="flex gap-2 px-4 py-2 bg-transparent text-sm font-medium text-black ">
-        {props.title} <ArrowRight />
-      </Button> */}
     </div>
   );
 };

@@ -17,61 +17,58 @@ import { MovieDetails } from "./_components";
 import { Cast } from "./_components/Cast";
 import { VideoDetail } from "./_components/VideoDetail";
 import { CastCrew } from "./_components/CastCrew";
+import { MovieTrailer } from "./_components/MovieTrailer";
+import { MoreLikeSection } from "./_components/MoreLikeSection";
+// import { MoreLikeSection } from "@/app/_components/MoreLikeSection";
 /*******************/
-type genre = {
-  id: number;
-  name: string;
-};
-// type Results = {
-//   title: string;
+// type genre = {
+//   id: number;
+//   name: string;
 // };
 
-export type MovieDetail = {
-  adult: boolean;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-  genres: genre[];
+// export type MovieDetail = {
+//   adult: boolean;
+//   original_language: string;
+//   original_title: string;
+//   overview: string;
+//   popularity: number;
+//   poster_path: string;
+//   release_date: string;
+//   title: string;
+//   video: boolean;
+//   vote_average: number;
+//   vote_count: number;
+//   genres: genre[];
 
-  // results:Results[];
-
-  id: number;
-  runtime: number;
-  backdrop_path: string;
-};
+//   id: number;
+//   runtime: number;
+//   backdrop_path: string;
+// };
 
 type Params = {
   movieId: string;
 };
 
-export default function MovieDetailPage() {
+export default function Page() {
   const { movieId } = useParams<Params>();
 
-  const [movie, setMovie] = useState<MovieDetail>();
+  const [movie, setMovie] = useState<detailRes>();
 
   useEffect(() => {
     const getData = async () => {
       const res = await fetch(
-        `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`,
+        `${process.env.TMDB_BASE_URL}/movie/${movieId}?language=en-US`,
         {
           method: "GET",
           headers: {
             accept: "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzY2ExNmNlNjA1MzAzNTk5MjIwNGYxMzI1ZDAwZGIwNiIsIm5iZiI6MTc2MzUyMTk5NS41MTcsInN1YiI6IjY5MWQzNWNiMTg0ZThlNTY0ZjJkNDE4MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jl3UrTVIxBBbn3K1fvJ14YrplMU9UtuwKtkSW3lVa78",
+            Authorization: `Bearer ${process.env.TMDB_API_TOKEN}`,
           },
           next: { revalidate: 3600 },
         }
       );
-
       const data = await res.json();
+      // const data = (await res.json()) as detailRes;
       console.log(data);
 
       setMovie(data);
@@ -82,81 +79,70 @@ export default function MovieDetailPage() {
   }, [movieId]);
 
   return (
-    <div>
-      {movie && <MovieDetails movie={movie} />}
-      <VideoDetail
-        movieId={movieId}
-        image={"https://image.tmdb.org/t/p/w500/" + movie?.backdrop_path}
-      />
-      <div>{movieId}</div>
-      {/* <Cast movieId={Number(movieId)} /> */}
-      {/* <MoreLikeThis /> */}
-      <CastCrew movieId={movieId} />
-    </div>
+    <>
+      <div className="w-screen h-screen flex flex-col items-center">
+        <Dialog>
+          <div className="w-[1080px] h-fit flex flex-col gap-6">
+            <div className="w-full h-fit flex justify-between ">
+              <div className="flex flex-col justify-between">
+                <h1 className="font-bold text-4xl text-[#09090B]">
+                  {movie?.title}
+                </h1>
+                {/* title bichne*/}
+                <p className="font-normal text-lg  text-[#09090B]">
+                  <span>{movie?.release_date}</span> {/* release_date bichne*/}
+                  <span>· PG ·</span>
+                  <span> {movie?.runtime + " min "} </span>
+                  {/* run_time bichne*/}
+                </p>
+              </div>
+              <div className="flex flex-col">
+                <p className="text-xs font-medium text-[#09090B]">Rating</p>
+                <div className="flex gap-2">
+                  <Star
+                    fill="#FDE047"
+                    className="w-7 h-7 text-[#FDE047] mt-2.5"
+                  />
+                  <div className="flex flex-col">
+                    <div className="flex items-center">
+                      <p className="text-lg font-semibold">
+                        {movie?.vote_average}
+                      </p>
+                      {/* vote_avarage bichne*/}
+                      <span className="text=[#71717A] text-base font-normal">
+                        / 10
+                      </span>
+                    </div>
+                    <p className="font-normal text-xs text-[#71717A]">
+                      {movie?.vote_count + "K"}
+                    </p>
+                    {/* vote_count bichne*/}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <MovieTrailer movieId={movieId} movie={movie} />
+          </div>
+          <div className="w-[1080px] flex flex-col gap-5 mt-8">
+            <div className="flex gap-3 ">
+              {movie?.genres.map((item, index) => {
+                return (
+                  <Badge
+                    key={index}
+                    className="bg-white text-black px-2 border border-[#E4E4E7] text-xs gap-2 "
+                  >
+                    {item.name}
+                  </Badge>
+                );
+              })}
+            </div>
+            <p>{movie?.overview}</p>
+            {/* overview bichne*/}
+          </div>
+        </Dialog>
+        <CastCrew movieId={movieId} />
+      </div>
+      <MoreLikeSection />
+    </>
   );
 }
-
-//  return (
-//     <Dialog>
-//       <div className="w-full h-screen flex flex-col items-center border-4 border-red-600">
-//         <NavigationCard />
-//         <div className="w-[1080px] h-fit flex flex-col gap-6 border border-green-500">
-//           <div className="w-full h-fit flex justify-between border">
-//             <div className="flex flex-col justify-between border">
-//               <h1 className="font-bold text-4xl text-[#09090B]">Wicked</h1>
-//               {/* title bichne*/}
-//               <p className="font-normal text-lg  text-[#09090B]">
-//                 <span>2024.11.26</span> {/* release_date bichne*/}
-//                 <span>· PG ·</span>
-//                 <span>2h 40m</span>
-//                 {/* run_time bichne*/}
-//               </p>
-//             </div>
-//             <div className="flex flex-col border ">
-//               <p className="text-xs font-medium text-[#09090B]">Rating</p>
-//               <div className="flex gap-2">
-//                 <Star
-//                   fill="#FDE047"
-//                   className="w-7 h-7 text-[#FDE047] mt-2.5"
-//                 />
-//                 <div className="flex flex-col">
-//                   <div className="flex items-center">
-//                     <p className="text-lg font-semibold"> 6.9 </p>{" "}
-//                     {/* vote_avarage bichne*/}
-//                     <span className="text=[#71717A] text-base font-normal">
-//                       / 10
-//                     </span>
-//                   </div>
-//                   <p className="font-normal text-xs text-[#71717A]">37k</p>{" "}
-//                   {/* popularity bichne*/}
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//           <div className="w-[1080px] h-[428px] flex gap-8 border">
-//             <div className="w-[290px] rounded-sm h-full border bg-start bg-cover object-fill">
-//               <img
-//                 src="https://wallpapercave.com/wp/wp2563744.jpg"
-//                 className="w-[290px] h-[428px] object-cover"
-//               />
-//             </div>
-//           <VideoDetail/>
-//           </div>
-//           <div className=" flex flex-col gap-5 mt-8">
-//             <div className="flex gap-3">
-//               <Badge variant="outline" className=" ">
-//                 item
-//               </Badge>
-//             </div>
-//             <p>
-//               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-//               eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-//               Sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing
-//               elit. Sed do eiusmod
-//             </p>
-//           <CastCrew/>
-//           </div>
-//         </div>
-//         <Footer />
-//       </div>
-//     </Dialog>

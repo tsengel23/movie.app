@@ -7,24 +7,16 @@ import { Carusel } from "./_components/Carusel";
 import { MovieSections } from "./_components/MovieSections";
 import { Footer } from "./_components/Footer";
 import { MovieDetails } from "./_components/MovieDetails";
-import { MovieSearch } from "./_components/MovieSearch";
-import { VideoDetail } from "./movie/[movieId]/_components/VideoDetail";
-import { PaginationMovie } from "./_components/PaginationMovie";
-import { MovieCardSkeleton } from "./_components/MovieCardSkeleton";
-import { CarouselMovieItemSkeleton } from "./_components/CarouselMovieItemSkeleton";
-import { CastCrew } from "./movie/[movieId]/_components/CastCrew";
 
 /*********************************************************************/
 
 export default function MovieApp() {
   return (
     // <MovieDetails />
-    // <CastCrew movieId="string" />
-    <div className="w-screen flex flex-col items-center border border-red-600">
-      <NavigationCard />
+
+    <div className="w-screen flex flex-col items-center ">
       <Carusel />
       <MovieSections />
-      <Footer />
     </div>
   );
 }

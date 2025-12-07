@@ -14,7 +14,7 @@ type MovieCardProps = {
 export const MovieCard = (props: MovieCardProps) => {
   return (
     <Link href={`/movie/${props?.id}`}>
-      <div className=" w-full h-full flex flex-col gap-0.5 rounded-lg bg-muted border overflow-hidden">
+      <div className=" w-full h-full flex flex-col gap-0.5 rounded-lg bg-muted  overflow-hidden">
         <div className="w-full h-full">
           <div className="w-full h-full hover:opacity-75 transition-opacity duration-300 ease-in-out relative">
             <img src={props.image} className="w-full h-full " />
