@@ -20,30 +20,6 @@ import { CastCrew } from "./_components/CastCrew";
 import { MovieTrailer } from "./_components/MovieTrailer";
 import { MoreLikeSection } from "./_components/MoreLikeSection";
 // import { MoreLikeSection } from "@/app/_components/MoreLikeSection";
-/*******************/
-// type genre = {
-//   id: number;
-//   name: string;
-// };
-
-// export type MovieDetail = {
-//   adult: boolean;
-//   original_language: string;
-//   original_title: string;
-//   overview: string;
-//   popularity: number;
-//   poster_path: string;
-//   release_date: string;
-//   title: string;
-//   video: boolean;
-//   vote_average: number;
-//   vote_count: number;
-//   genres: genre[];
-
-//   id: number;
-//   runtime: number;
-//   backdrop_path: string;
-// };
 
 type Params = {
   movieId: string;
@@ -106,7 +82,7 @@ export default function Page() {
                   <div className="flex flex-col">
                     <div className="flex items-center">
                       <p className="text-lg font-semibold">
-                        {movie?.vote_average}
+                        {movie?.vote_average.toFixed(1)}
                       </p>
                       {/* vote_avarage bichne*/}
                       <span className="text=[#71717A] text-base font-normal">

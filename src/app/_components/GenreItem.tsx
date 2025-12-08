@@ -7,8 +7,6 @@ import { ChevronRight } from "lucide-react";
 type GenreItemProps = {
   id: number;
   name: string;
-  // handleClickGenre: () => void;
-  // onClick: () => void;
 };
 
 export const GenreItem = (props: GenreItemProps) => {

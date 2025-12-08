@@ -5,30 +5,6 @@ import { TitleCard } from "./TitleCard";
 import { useEffect, useState } from "react";
 import { MovieCardSkeleton } from "./MovieCardSkeleton";
 
-export type result = {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-};
-
-type Response = {
-  page: number;
-  results: result[];
-  total_pages: number;
-  total_results: number;
-};
-
 type MovieSectionProps = {
   categoryName: string;
   title: string;
@@ -52,7 +28,7 @@ export const MovieSection = (props: MovieSectionProps) => {
           next: { revalidate: 3600 }, // 1 цаг тутам шинэчлэнэ
         }
       );
-      const data = (await res.json()) as Response;
+      const data = (await res.json()) as movieRes;
 
       setMovies(data.results);
       setLoading(false);

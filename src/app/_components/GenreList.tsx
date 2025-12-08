@@ -48,22 +48,27 @@ export const GenreList = () => {
     fetchData();
   }, []);
   return (
-    <div className="flex flex-wrap gap-4 max-w-md border-r h-fit">
-      {genres?.map((item) => {
-        return (
-          <Badge
-            key={item.id}
-            className="w-fit h-5 flex items-center gap-2 cursor-pointer hover:bg-black hover:text-white "
-            variant={
-              genreIds.includes(item.id.toString()) ? "default" : "outline"
-            }
-            onClick={() => handleClickGenre(item.id.toString())}
-          >
-            {item.name}
-            <ChevronRight strokeWidth={1} />
-          </Badge>
-        );
-      })}
+    <div className="flex flex-col">
+      <p className="text-[#09090B] font-semibold text-2xl">Genres</p>
+      <p className="text-[#09090B] font-base">See lists of movies by genre</p>
+      <hr className="mt-5" />
+      <div className="flex flex-wrap gap-4 max-w-md border-r h-fit mt-5">
+        {genres?.map((item) => {
+          return (
+            <Badge
+              key={item.id}
+              className="w-fit h-5 flex items-center gap-2 cursor-pointer hover:bg-black hover:text-white "
+              variant={
+                genreIds.includes(item.id.toString()) ? "default" : "outline"
+              }
+              onClick={() => handleClickGenre(item.id.toString())}
+            >
+              {item.name}
+              <ChevronRight strokeWidth={1} />
+            </Badge>
+          );
+        })}
+      </div>
     </div>
   );
 };

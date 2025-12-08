@@ -10,35 +10,6 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Search } from "lucide-react";
 import { MovieSearchCard } from "./MovieSearchCard";
-/************/
-// type genre_id = {
-//   id: number;
-// };
-
-// type result = {
-//   adult: boolean;
-//   backdrop_path: string;
-//   genre_ids: genre_id[];
-//   id: number;
-//   original_language: string;
-//   original_title: string;
-//   overview: string;
-//   popularity: number;
-//   poster_path: string;
-//   release_date: string;
-//   title: string;
-//   video: boolean;
-//   vote_average: number;
-//   vote_count: number;
-// };
-
-// type response = {
-//   page: number;
-//   results: result[];
-//   total_pages: number;
-//   total_results: number;
-// };
-/**************/
 
 export const MovieSearch = () => {
   const [movies, setMovies] = useState<result[]>([]);
@@ -65,7 +36,7 @@ export const MovieSearch = () => {
           },
         }
       );
-      const data = await res.json();
+      const data = (await res.json()) as movieRes;
 
       setMovies(data.results);
       setLoading(false);
@@ -112,6 +83,7 @@ export const MovieSearch = () => {
                 title={movie.title}
                 rate={movie.vote_average}
                 date={movie.release_date}
+                id={movie.id}
               />
             ))}
         </div>

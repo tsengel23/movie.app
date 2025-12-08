@@ -71,7 +71,7 @@ export function Carusel(props: CaruselProps) {
             next: { revalidate: 3600 },
           }
         );
-        const data = (await res.json()) as MovieResponse;
+        const data = (await res.json()) as movieRes;
 
         setMovies(data.results);
       } catch (error) {

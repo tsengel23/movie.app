@@ -3,29 +3,6 @@ import { MovieCard } from "./MovieCard";
 import { TitleCard } from "./TitleCard";
 import { useEffect, useState } from "react";
 
-export type result = {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-};
-
-type Response = {
-  page: number;
-  results: result[];
-  total_pages: number;
-  total_results: number;
-};
 // const popular = [
 //   {
 //     image:
@@ -106,7 +83,7 @@ export const PopularSection = (props: PopularSectionProps) => {
           next: { revalidate: 3600 }, // 1 цаг тутам шинэчлэнэ
         }
       );
-      const data = (await res.json()) as Response;
+      const data = (await res.json()) as movieRes;
 
       setMovies(data.results);
     };

@@ -6,15 +6,17 @@ import { TitleCard } from "./TitleCard";
 import { RateCard } from "./RateCard";
 
 type MovieSearchCardProps = {
+  // movie:MovieResponse
   image: string;
   title: string;
   rate: number;
   date: string;
-  // href?: string;
+  id: number;
 };
 
 export const MovieSearchCard = (props: MovieSearchCardProps) => {
   return (
+    // <Link href={`/movie/${id}`}>
     <div className="w-fit h-fit flex justify-between p-2 gap-4 border-b border-b-gray-300 ">
       <img
         className="w-[67px] h-[100px] border rounded-md "
@@ -34,7 +36,7 @@ export const MovieSearchCard = (props: MovieSearchCardProps) => {
             {props.date}
           </span>
 
-          <TitleCard title="" href={`/category/upcoming`} />
+          <TitleCard title="" href={`/movie/${props?.id}`} />
           {/* {props.href && (
             <Link href={props.href}>
               <Button
@@ -48,5 +50,6 @@ export const MovieSearchCard = (props: MovieSearchCardProps) => {
         </div>
       </div>
     </div>
+    // </Link>
   );
 };
