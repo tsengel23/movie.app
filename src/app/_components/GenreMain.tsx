@@ -34,8 +34,12 @@ export const GenreMain = () => {
       ? genreIds.filter((id) => id !== genreId)
       : [...genreIds, genreId];
 
-    params.set("genreIds", updatedGenreIds.join(","));
-    router.push(pathname + "?" + params);
+    if (updatedGenreIds.length > 0) {
+      params.set("genreIds", updatedGenreIds.join(","));
+      router.push("/Genre?" + params);
+    } else {
+      router.push("/Genre?");
+    }
   };
   useEffect(() => {
     const getData = async () => {

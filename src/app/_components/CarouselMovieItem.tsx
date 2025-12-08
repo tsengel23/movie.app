@@ -23,23 +23,6 @@ type CarouselMovieProps = {
   movieId: number;
 };
 
-// type result = {
-//   iso_639_1: string;
-//   iso_3166_1: string;
-//   name: string;
-//   key: string;
-//   site: string;
-//   size: number;
-//   type: string;
-//   official: boolean;
-//   published_at: string;
-//   id: string;
-// };
-
-// type Response = {
-//   id: number;
-//   results: result[];
-// };
 export const CarouselMovieItem = (props: CarouselMovieProps) => {
   const [trailer, setTrailer] = useState<string>("");
   useEffect(() => {

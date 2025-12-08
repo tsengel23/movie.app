@@ -82,7 +82,7 @@ type result = {
   vote_average: number;
   vote_count: number;
 };
-type Response = {
+type MovieResponse = {
   page: number;
   results: result[];
   total_pages: number;

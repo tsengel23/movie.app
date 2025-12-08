@@ -1,17 +1,31 @@
 "useclient";
 import { Badge } from "@/components/ui/badge";
-import { ChevronDown } from "lucide-react";
-import { useSearchParams } from "next/navigation";
+import { ChevronDown, ChevronRight } from "lucide-react";
+import { usePathname, useSearchParams, useRouter } from "next/navigation";
+//
 import { useEffect, useState } from "react";
 
 export const GenreList = () => {
   const searchParams = useSearchParams();
-  const genreIds = searchParams.get("genreIds")?.split(",");
+  const router = useRouter();
+  const pathname = usePathname();
+  const genreIds = searchParams.get("genreIds")?.split(",") || [];
   console.log(genreIds);
   const [genres, setGenres] = useState<genre[]>([]);
 
-  const handleClickGenre = (genreId: number) => {
-    console.log(genreId);
+  const handleClickGenre = (genreId: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    const updatedGenreIds = genreIds?.includes(genreId)
+      ? genreIds.filter((id) => id !== genreId)
+      : [...genreIds, genreId];
+
+    if (updatedGenreIds.length > 0) {
+      params.set("genreIds", updatedGenreIds.join(","));
+      router.push("/Genre?" + params);
+    } else {
+      router.push("/Genre?");
+    }
   };
   useEffect(() => {
     const fetchData = async () => {
@@ -34,16 +48,19 @@ export const GenreList = () => {
     fetchData();
   }, []);
   return (
-    <div className="flex flex-wrap gap-4 max-w-md border-r">
-      {genres?.map((el) => {
+    <div className="flex flex-wrap gap-4 max-w-md border-r h-fit">
+      {genres?.map((item) => {
         return (
           <Badge
-            key={(el, id)}
-            className="flex"
-            variant="outline"
-            onClick={() => handleClickGenre(el.id)}
+            key={item.id}
+            className="w-fit h-5 flex items-center gap-2 cursor-pointer hover:bg-black hover:text-white "
+            variant={
+              genreIds.includes(item.id.toString()) ? "default" : "outline"
+            }
+            onClick={() => handleClickGenre(item.id.toString())}
           >
-            {el.name} <ChevronDown />
+            {item.name}
+            <ChevronRight strokeWidth={1} />
           </Badge>
         );
       })}

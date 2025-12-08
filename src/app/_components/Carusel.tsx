@@ -13,30 +13,6 @@ import { CarouselMovieItem } from "./CarouselMovieItem";
 import { useEffect, useState } from "react";
 import { CarouselMovieItemSkeleton } from "./CarouselMovieItemSkeleton";
 
-export type result = {
-  adult: boolean;
-  backdrop_path: string;
-  genre_ids: number[];
-  id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string;
-  release_date: string;
-  title: string;
-  video: boolean;
-  vote_average: number;
-  vote_count: number;
-};
-
-type Response = {
-  page: number;
-  results: result[];
-  total_pages: number;
-  total_results: number;
-};
-
 // const content = [
 //   {
 //     image: "https://images4.alphacoders.com/137/thumb-1920-1374991.jpg",
@@ -95,7 +71,7 @@ export function Carusel(props: CaruselProps) {
             next: { revalidate: 3600 },
           }
         );
-        const data = (await res.json()) as Response;
+        const data = (await res.json()) as MovieResponse;
 
         setMovies(data.results);
       } catch (error) {
