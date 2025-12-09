@@ -61,11 +61,11 @@ export default function Page() {
           <div className="w-[1080px] h-fit flex flex-col gap-6">
             <div className="w-full h-fit flex justify-between ">
               <div className="flex flex-col justify-between">
-                <h1 className="font-bold text-4xl text-[#09090B]">
+                <h1 className="font-bold text-4xl text-[#09090B] dark:text-white">
                   {movie?.title}
                 </h1>
                 {/* title bichne*/}
-                <p className="font-normal text-lg  text-[#09090B]">
+                <p className="font-normal text-lg  text-[#09090B] dark:text-white">
                   <span>{movie?.release_date}</span> {/* release_date bichne*/}
                   <span>· PG ·</span>
                   <span> {movie?.runtime + " min "} </span>
@@ -73,7 +73,9 @@ export default function Page() {
                 </p>
               </div>
               <div className="flex flex-col">
-                <p className="text-xs font-medium text-[#09090B]">Rating</p>
+                <p className="text-xs font-medium text-[#09090B] dark:text-white">
+                  Rating
+                </p>
                 <div className="flex gap-2">
                   <Star
                     fill="#FDE047"
@@ -85,11 +87,11 @@ export default function Page() {
                         {movie?.vote_average.toFixed(1)}
                       </p>
                       {/* vote_avarage bichne*/}
-                      <span className="text=[#71717A] text-base font-normal">
+                      <span className="text=[#71717A] text-base font-normal dark:text-white">
                         / 10
                       </span>
                     </div>
-                    <p className="font-normal text-xs text-[#71717A]">
+                    <p className="font-normal text-xs text-[#71717A] dark:text-white">
                       {movie?.vote_count + "K"}
                     </p>
                     {/* vote_count bichne*/}

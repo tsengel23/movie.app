@@ -43,27 +43,31 @@ export const CastCrew = ({ movieId }: CastCrewProps) => {
   return (
     <div className="flex flex-col gap-5 w-[1080px] h-[163px] mt-5">
       <div className="flex gap-12  pb-3  border-b border-b-gray-300">
-        <h3 className="text-base font-bold w-16 h-7 text-[#09090B]">
+        <h3 className="text-base font-bold w-16 h-7 text-[#09090B] dark:text-white">
           Director
         </h3>
-        <p className="text-base font-normal   text-[#09090B]">
+        <p className="text-base font-normal   text-[#09090B] dark:text-white">
           {creditInfo?.crew
             .filter((item) => item.department === "Directing")
             .map((item) => item.name)}
         </p>
       </div>
       <div className="flex gap-12 pb-3  border-b border-b-gray-300">
-        <h3 className="text-base font-bold w-16 h-7 text-[#09090B]">Writers</h3>
-        <p className="text-base font-normal   text-[#09090B]">
+        <h3 className="text-base font-bold w-16 h-7 text-[#09090B] dark:text-white">
+          Writers
+        </h3>
+        <p className="text-base font-normal   text-[#09090B] dark:text-white">
           {creditInfo?.crew
             .filter((item) => item.department === "Writing")
             .map((item) => item.name)}
         </p>
       </div>
       <div className="flex gap-12 pb-3  border-b border-b-gray-300">
-        <h3 className="text-base font-bold w-16 h-7 text-[#09090B]">Stars</h3>
-        <p className="text-base font-normal   text-[#09090B]">
-          {creditInfo?.cast[0].name}
+        <h3 className="text-base font-bold w-16 h-7 text-[#09090B] dark:text-white">
+          Stars
+        </h3>
+        <p className="text-base font-normal   text-[#09090B] dark:text-white">
+          {creditInfo?.cast[0]?.name}
         </p>
       </div>
     </div>

@@ -3,7 +3,7 @@
 import { NavigationCard } from "@/app/_components/NavigationCard";
 import { TitleCard } from "@/app/_components/TitleCard";
 import { MovieCard } from "@/app/_components/MovieCard";
-import { PreviousNext } from "@/app/_components/PreviousNext";
+// import { PreviousNext } from "@/app/_components/PreviousNext";
 import { Footer } from "@/app/_components/Footer";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -96,7 +96,7 @@ export default function CategoryPage() {
         })}
       </div>
       <div className="w-7xl flex justify-end border">
-        <PaginationMovie />
+        {/* <PaginationMovie /> */}
       </div>
 
       {/*  */}

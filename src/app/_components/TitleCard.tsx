@@ -9,16 +9,18 @@ type TitleCardProps = {
   href?: string;
 };
 
-export const TitleCard = (props: TitleCardProps) => {
+export const TitleCard = ({ title, href }: TitleCardProps) => {
   return (
     <div className="flex justify-between  ">
-      <h1 className="text-[#09090B] font-semibold text-2xl ">{props.title}</h1>
+      <h1 className="text-[#09090B] font-semibold text-2xl dark:text-white">
+        {title}
+      </h1>
 
-      {props.href && (
-        <Link href={props.href}>
+      {href && (
+        <Link href={href || "/"}>
           <Button
             variant="link"
-            className="flex gap-2 px-4 py-2 bg-transparent text-sm font-medium text-black border-none"
+            className="flex gap-2 px-4 py-2 bg-transparent text-sm font-medium text-black border-none dark:text-white"
           >
             See more <ArrowRight />
           </Button>

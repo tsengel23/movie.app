@@ -76,7 +76,7 @@ export const MovieSearch = () => {
             <p className="p-4 text-center">No results found.</p>
           )}
           {!loading &&
-            movies.map((movie) => (
+            movies?.map((movie) => (
               <MovieSearchCard
                 key={movie.id}
                 image={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}

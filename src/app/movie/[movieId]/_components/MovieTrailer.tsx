@@ -13,33 +13,6 @@ import { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 // import { result } from "@/app/category/[categoryName]/page";
 
-// type detailRes = {
-//   adult: boolean;
-//   backdrop_path: string;
-//   belongs_to_collection: string;
-//   budget: number;
-//   genres: genre[];
-//   homepage: string;
-//   id: number;
-//   imdb_id: string;
-//   original_language: string;
-//   original_title: string;
-//   overview: string;
-//   popularity: number;
-//   poster_path: string;
-//   production_companies: company[];
-//   production_countries: country[];
-//   release_date: string;
-//   revenue: number;
-//   runtime: number;
-//   spoken_languages: language[];
-//   status: string;
-//   tagline: string;
-//   title: string;
-//   video: boolean;
-//   vote_average: number;
-//   vote_count: number;
-// };
 type MovieTrailerProps = {
   // movie?: movie;
   movieId: string;
@@ -61,6 +34,7 @@ export const MovieTrailer = ({ movieId, movie }: MovieTrailerProps) => {
         next: { revalidate: 3600 },
       });
       const data = (await res.json()) as videoRes;
+      console.log(data);
       setVideo(data?.results[0]?.key);
     };
     getData();
@@ -74,14 +48,24 @@ export const MovieTrailer = ({ movieId, movie }: MovieTrailerProps) => {
 
       <Dialog>
         <div className="w-[760px] h-[428px] rounded-sm  border border-red-600  bg-cover object-fill relative">
-          <div className="absolute flex gap-3  top-[364px] left-6 items-center border-4 border-green-600">
+          <ReactPlayer
+            // className="w-[1200px] h-[800px]"
+
+            src={`https://www.youtube.com/watch?v=${video}`}
+            style={{
+              width: "250",
+              height: "100%",
+            }}
+            controls={true}
+          />
+          <div className="absolute flex gap-3  top-[364px] left-6 items-center ">
             <DialogTrigger>
               <div className="w-10 h-10  flex justify-center items-center rounded-full bg-white border">
-                <Play className="w-4 h-4" />
+                <Play className="w-4 h-4 dark:text-black" />
               </div>
             </DialogTrigger>
-            <p>
-              Play trailer <span>{movie?.runtime}</span>
+            <p className="dark:text-white">
+              Play trailer <span>{}</span>
             </p>
           </div>
           <DialogContent className="p-0 overflow-hidden min-w-2xl h-[400px]">

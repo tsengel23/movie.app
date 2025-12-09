@@ -13,6 +13,7 @@ export const MoviesByGenre = () => {
   const [totalPage, setTotalPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [totalMovie, setTotalMovie] = useState(0);
+  const [genreName, setGenreName] = useState(0);
 
   useEffect(() => {
     const getData = async () => {
@@ -31,6 +32,7 @@ export const MoviesByGenre = () => {
         }
       );
       const data = await res.json();
+      console.log(data);
       setTotalMovie(data.total_results);
 
       setMovies(data.results);
