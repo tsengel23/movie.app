@@ -40,17 +40,15 @@ export const MovieTrailer = ({ movieId, movie }: MovieTrailerProps) => {
     getData();
   }, []);
   return (
-    <div className="flex gap-8 w-full max-w-270 h-107 relative">
+    <div className="flex gap-8 w-full max-w-270 h-107 relative border-2">
       <img
         src={"https://image.tmdb.org/t/p/w500" + movie?.poster_path}
         className="h-full w-[290px] rounded-sm"
       />
 
       <Dialog>
-        <div className="w-[760px] h-[428px] rounded-sm  border border-red-600  bg-cover object-fill relative">
+        <div className="w-[760px] h-[428px] rounded-sm bg-cover object-fill relative">
           <ReactPlayer
-            // className="w-[1200px] h-[800px]"
-
             src={`https://www.youtube.com/watch?v=${video}`}
             style={{
               width: "250",
