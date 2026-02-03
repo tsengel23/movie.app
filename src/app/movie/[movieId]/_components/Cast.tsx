@@ -7,7 +7,7 @@ type CastProps = {
 };
 
 export const Cast = ({ movieId }: CastProps) => {
-  const [cast, setCast] = useState([]);
+  const [cast, setCast] = useState<cast[]>([]);
 
   useEffect(() => {
     const getData = async () => {
@@ -21,7 +21,7 @@ export const Cast = ({ movieId }: CastProps) => {
               "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzY2ExNmNlNjA1MzAzNTk5MjIwNGYxMzI1ZDAwZGIwNiIsIm5iZiI6MTc2MzUyMTk5NS41MTcsInN1YiI6IjY5MWQzNWNiMTg0ZThlNTY0ZjJkNDE4MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jl3UrTVIxBBbn3K1fvJ14YrplMU9UtuwKtkSW3lVa78",
           },
           next: { revalidate: 3600 },
-        }
+        },
       );
 
       const data = await res.json();

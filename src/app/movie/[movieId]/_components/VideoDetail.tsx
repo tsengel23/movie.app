@@ -2,8 +2,6 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
@@ -54,7 +52,7 @@ export const VideoDetail = (props: VideoDetailProps) => {
             Authorization: `Bearer ${process.env.TMDB_API_TOKEN}`,
           },
           next: { revalidate: 3600 },
-        }
+        },
       );
       const data = (await res.json()) as videoRes;
 
