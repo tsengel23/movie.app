@@ -5,7 +5,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { ChevronDown, ChevronRight } from "lucide-react";
-import { GenreItem } from "./GenreItem";
+
 import { useState, useEffect } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Badge } from "@/components/ui/badge";
@@ -53,7 +53,7 @@ export const GenreMain = () => {
               Authorization: `Bearer ${process.env.TMDB_API_TOKEN}`,
             },
             next: { revalidate: 3600 },
-          }
+          },
         );
         const data = (await res.json()) as genreRes;
         setGenres(data.genres);

@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { useParams } from "next/navigation";
-import { MovieDetails } from "./_components";
+
 import { Cast } from "./_components/Cast";
 import { VideoDetail } from "./_components/VideoDetail";
 import { CastCrew } from "./_components/CastCrew";
@@ -41,7 +41,7 @@ export default function Page() {
             Authorization: `Bearer ${process.env.TMDB_API_TOKEN}`,
           },
           next: { revalidate: 3600 },
-        }
+        },
       );
       const data = await res.json();
       // const data = (await res.json()) as detailRes;

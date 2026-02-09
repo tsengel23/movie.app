@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, Suspense } from "react";
 import { ThemeProvider } from "./_components/theme-provider";
 import "keen-slider/keen-slider.min.css";
 import { NavigationCard } from "./_components/NavigationCard";
@@ -27,16 +27,18 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <NavigationCard />
-          {children}
-          <Footer />
-        </ThemeProvider>
+        <Suspense>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <NavigationCard />
+            {children}
+            <Footer />
+          </ThemeProvider>
+        </Suspense>
       </body>
     </html>
   );
