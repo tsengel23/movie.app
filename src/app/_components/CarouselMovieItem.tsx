@@ -37,13 +37,13 @@ export const CarouselMovieItem = (props: CarouselMovieProps) => {
               Authorization: `Bearer ${process.env.TMDB_API_TOKEN}`,
             },
             next: { revalidate: 3600 },
-          }
+          },
         );
 
         const data = (await res.json()) as videoRes;
         console.log(data.results);
         const offTrailer = data.results?.find(
-          (el) => el.type === "Trailer"
+          (el) => el.type === "Trailer",
         )?.key;
 
         const key = offTrailer || data.results[0]?.key || "";
