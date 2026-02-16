@@ -29,7 +29,7 @@ export const MoviesByGenre = () => {
             Authorization: `Bearer ${process.env.TMDB_API_TOKEN}`,
           },
           next: { revalidate: 3600 }, // 1 цаг тутам шинэчлэнэ
-        }
+        },
       );
       const data = await res.json();
       console.log(data);
@@ -53,7 +53,7 @@ export const MoviesByGenre = () => {
     <div className=" min-h-screen flex mx-20 ">
       <div className="w-fit h-fit flex flex-col mb-8 ">
         <h1 className="mb-8 font-semibold text-3xl text-[#09090B]">
-          <span> {totalMovie} </span> titles in<span> "{}" </span>
+          <span> {totalMovie} </span> titles in<span> {}</span>
         </h1>
         {loading && (
           <div className="w-fit h-fit grid grid-cols-4 gap-7 ">
@@ -81,7 +81,6 @@ export const MoviesByGenre = () => {
             totalPage={totalPage}
             nextPage={nextPage}
             prevPage={prevPage}
-            className=" "
           />
         </div>
       </div>

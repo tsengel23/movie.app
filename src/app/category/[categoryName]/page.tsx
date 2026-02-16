@@ -64,7 +64,7 @@ export default function Page() {
             Authorization: `Bearer ${process.env.TMDB_API_TOKEN}`,
           },
           next: { revalidate: 3600 }, // 1 цаг тутам шинэчлэнэ
-        }
+        },
       );
       const data = (await res.json()) as Response;
 
@@ -108,7 +108,6 @@ export default function Page() {
           totalPage={totalPage}
           nextPage={nextPage}
           prevPage={prevPage}
-          className=" "
         />
       </div>
 
