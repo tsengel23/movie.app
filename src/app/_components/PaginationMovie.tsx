@@ -16,7 +16,7 @@ type PaginationMovieProps = {
   totalPage: number;
   nextPage: () => void;
   prevPage: () => void;
-  className: string;
+  // className: string;
 };
 
 export const PaginationMovie = ({
@@ -50,12 +50,15 @@ export const PaginationMovie = ({
               {currentPage}
             </Button>
           </PaginationItem>
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
+
+          {totalPage > 3 && (
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+          )}
           {currentPage < totalPage && (
             <PaginationItem>
-              <Button onClick={prevPage} variant="outline">
+              <Button onClick={nextPage} variant="outline">
                 {currentPage + 1}
               </Button>
             </PaginationItem>

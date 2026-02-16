@@ -20,7 +20,7 @@ export const TitleCard = ({ title, href }: TitleCardProps) => {
         <Link href={href || "/"}>
           <Button
             variant="link"
-            className="flex gap-2 px-4 py-2 bg-transparent text-sm font-medium text-black border-none dark:text-white"
+            className="flex gap-2 px-4 py-2 bg-transparent text-lg font-medium text-black border-none dark:text-white"
           >
             See more <ArrowRight />
           </Button>
